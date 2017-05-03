@@ -52,35 +52,34 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     // class TreeAnnotation and creating annotation object in the viewController
        
-        let imageView = UIImage(named: "download.png")
         
         
-      //  let tree1 = TreeAnnotation(title: "Silver Maple", subtitle: "Acer sacharinum, Family ACERACEAE", coordinate: CLLocationCoordinate2D(latitude: 37.218451, longitude: -93.285680 ))
-     //   let tree2 = TreeAnnotation(title: "Basswood", subtitle:"Tiliaamericana, Family MALVACEAE", coordinate:CLLocationCoordinate2DMake(37.221070, -93.285696))
+       let tree1 = TreeAnnotation(title: "Silver Maple", subtitle: "Acer sacharinum, Family ACERACEAE", coordinate: CLLocationCoordinate2D(latitude: 37.218451, longitude: -93.285680 ))
+        let tree2 = TreeAnnotation(title: "Basswood", subtitle:"Tiliaamericana, Family MALVACEAE", coordinate:CLLocationCoordinate2DMake(37.221070, -93.285696))
        
         
-     //   let tree3 = TreeAnnotation(title:"Willow", subtitle:"Quercus phellos, Family FAGACEAE", coordinate:CLLocationCoordinate2DMake(37.218217, -93.287392))
+        let tree3 = TreeAnnotation(title:"Willow", subtitle:"Quercus phellos, Family FAGACEAE", coordinate:CLLocationCoordinate2DMake(37.218217, -93.287392))
         
         
         
         
 
 
-     //   let tree4 = TreeAnnotation(title:"Catalpa", subtitle:"catalpa speciosa, Family BIGNONIACEAE", coordinate:CLLocationCoordinate2DMake(37.217409, -93.284849))
+        let tree4 = TreeAnnotation(title:"Catalpa", subtitle:"catalpa speciosa, Family BIGNONIACEAE", coordinate:CLLocationCoordinate2DMake(37.217409, -93.284849))
         
       
         
 
-        let  tree5 = TreeAnnotation(title:"Sycamore", subtitle:"platanus occidentalis, Family PLATANACEAE", coordinate:CLLocationCoordinate2DMake(37.218960, -93.286120), image: imageView!)
+        let  tree5 = TreeAnnotation(title:"Sycamore", subtitle:"platanus occidentalis, Family PLATANACEAE", coordinate:CLLocationCoordinate2DMake(37.218960, -93.286120))
             
        
         
         
 
-           // map.addAnnotation(tree1)
-            //map.addAnnotation(tree2)
-           // map.addAnnotation(tree3)
-           // map.addAnnotation(tree4)
+            map.addAnnotation(tree1)
+            map.addAnnotation(tree2)
+            map.addAnnotation(tree3)
+            map.addAnnotation(tree4)
             map.addAnnotation(tree5)
         
     
