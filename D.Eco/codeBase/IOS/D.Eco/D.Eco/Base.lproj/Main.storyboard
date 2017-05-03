@@ -45,10 +45,10 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pJ8-BU-vW2">
-                                <rect key="frame" x="64" y="619" width="247" height="29"/>
+                                <rect key="frame" x="58" y="619" width="247" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="Standard"/>
+                                    <segment title=""/>
                                     <segment title="Satellite"/>
                                 </segments>
                                 <color key="tintColor" red="0.52549019607843139" green="0.039215686274509803" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
@@ -72,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-210.40000000000001" y="-403.44827586206901"/>
+            <point key="canvasLocation" x="66" y="-439"/>
         </scene>
     </scenes>
     <resources>
