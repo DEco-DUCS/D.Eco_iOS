@@ -182,6 +182,7 @@
         <image name="startTourButton.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ndN-W9-EsJ"/>
         <segue reference="tzs-jF-IdD"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.49411764705882355" green="0.0" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>

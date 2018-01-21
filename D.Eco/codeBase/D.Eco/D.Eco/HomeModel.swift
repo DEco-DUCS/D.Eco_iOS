@@ -102,7 +102,7 @@ class HomeModel:NSObject {
                 
                 locationArray.append(currentAnnotaion)
                 print(location)
-            }// for loop end
+            }// Json for loop end
             
             // pass the obejct back useing the delegate; 
             delegate?.itemsDownloaded(locations: locationArray)

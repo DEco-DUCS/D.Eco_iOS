@@ -46,7 +46,7 @@ class splashScreenViewController: UIViewController, HomeModelDelegate {
         
     }
    
-    func autoSegue(){
+    @objc func autoSegue(){
         
         self.performSegue(withIdentifier: "goToViewController", sender: self)
         
@@ -65,7 +65,7 @@ class splashScreenViewController: UIViewController, HomeModelDelegate {
         }
     }
     
-    func goBar(){
+    @objc func goBar(){
         progressBar.progress += 0.05
         
         
