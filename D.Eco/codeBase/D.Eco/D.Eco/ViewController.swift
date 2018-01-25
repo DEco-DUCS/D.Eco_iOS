@@ -16,6 +16,19 @@ import CoreLocation
 // done recently, created another protocos subclass to store the other json object.
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    var menuStatus: Bool = false
+
+    
+    
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // code to handel the header image.
+        
+        let titleView = UIImageView(image: UIImage(named: "Fixed Deco Header.png"))
+        self.navigationItem.titleView = titleView
+    }
     @IBAction func userLocationRefreash(_ sender: Any) {
         
         self.myMap.setUserTrackingMode(.follow, animated:true)

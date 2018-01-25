@@ -56,8 +56,9 @@ class splashScreenViewController: UIViewController, HomeModelDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goToViewController") {
             // pass data to next view
+        let navigationViewController: UINavigationController =  segue.destination as! UINavigationController
+        let mainViewController = navigationViewController.viewControllers.first as! UIViewController as! ViewController
         
-        let mainViewController: ViewController = segue.destination as! ViewController
         
         mainViewController.locationArray = locationArray
         mainViewController.locationArrayForTour = locationArrayForTour
