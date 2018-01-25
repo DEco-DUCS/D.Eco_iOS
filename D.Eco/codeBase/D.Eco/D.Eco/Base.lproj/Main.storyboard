@@ -53,9 +53,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CjO-ny-PXf">
                                 <rect key="frame" x="0.0" y="64" width="88" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQf-WE-y5G">
+                                <rect key="frame" x="0.0" y="64" width="150" height="185"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLU-Z1-8wb">
-                                        <rect key="frame" x="0.0" y="0.0" width="88" height="33"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLU-Z1-8wb">
+                                        <rect key="frame" x="5" y="10" width="140" height="33"/>
                                         <color key="backgroundColor" red="0.4941176471" green="0.0" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="Take a Tour">
@@ -66,14 +69,33 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SLU-Z1-8wb" firstAttribute="top" secondItem="YQf-WE-y5G" secondAttribute="top" constant="10" id="8hN-Oo-8iF"/>
+                                    <constraint firstItem="SLU-Z1-8wb" firstAttribute="leading" secondItem="YQf-WE-y5G" secondAttribute="leading" constant="5" id="9zp-kW-Cd0"/>
+                                    <constraint firstAttribute="height" constant="185" id="XRG-v0-f7K"/>
+                                    <constraint firstAttribute="trailing" secondItem="SLU-Z1-8wb" secondAttribute="trailing" constant="5" id="imf-Vy-YRS"/>
+                                    <constraint firstAttribute="width" constant="150" id="y4E-E4-tng"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YQf-WE-y5G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4qx-ci-h68"/>
+                            <constraint firstItem="YQf-WE-y5G" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="QpI-26-fzi"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7mX-xN-Qgl"/>
+                    <navigationItem key="navigationItem" id="7mX-xN-Qgl">
+                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="ocO-uE-IsF">
+                            <connections>
+                                <action selector="sideMenuToggle:" destination="BYZ-38-t0r" id="3VU-gN-llN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="myMap" destination="oD4-Fe-Y3K" id="Jz8-8z-NqT"/>
                         <outlet property="segmentControl" destination="FNg-Kp-zmi" id="8Oc-PN-TY8"/>
+                        <outlet property="sideMenuConstrain" destination="4qx-ci-h68" id="IZh-Tm-uM3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

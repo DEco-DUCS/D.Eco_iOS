@@ -16,9 +16,22 @@ import CoreLocation
 // done recently, created another protocos subclass to store the other json object.
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-    var menuStatus: Bool = false
+    var menuIsHidden: Bool = true
 
     
+    @IBOutlet weak var sideMenuConstrain: NSLayoutConstraint!
+    
+    
+    @IBAction func sideMenuToggle(_ sender: UIBarButtonItem) {
+        if menuIsHidden {
+            sideMenuConstrain.constant = 0
+            menuIsHidden = false
+        }else{
+            sideMenuConstrain.constant = -150
+            menuIsHidden = true
+            
+        }
+    }
     
     
     
@@ -93,6 +106,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        sideMenuConstrain.constant = -150
+        
         print(locationArray)
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
