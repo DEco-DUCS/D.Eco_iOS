@@ -229,7 +229,7 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
             //        self.myMap.showsUserLocation = true
             
-            manager.stopUpdatingLocation()
+        
         }
         
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
