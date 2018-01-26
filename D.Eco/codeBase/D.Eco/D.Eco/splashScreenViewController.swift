@@ -62,7 +62,7 @@ class splashScreenViewController: UIViewController, HomeModelDelegate {
         
         mainViewController.locationArray = locationArray
         mainViewController.locationArrayForTour = locationArrayForTour
-            print("location Array for Tour -----------------------------",locationArrayForTour,"---------------------------")
+            
         }
     }
     

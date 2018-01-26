@@ -15,7 +15,7 @@ import CoreLocation
 // done recently, added another storage to the Homemodel class to get the other tree for the tour.
 // done recently, created another protocos subclass to store the other json object.
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController {
     
     var treeNameToDetails:String?
     var treeSubtitleToDetails:String?
@@ -32,6 +32,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // direction button
     // apears when user touch an annotation
     // once it's tapped it will create a route from the user current locaton to the tapped annotation
+    
     @IBAction func directionButton(_ sender: Any) {
         guard let currentPlacemark = currentPlacemark else {
             return
@@ -111,24 +112,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let manager = CLLocationManager()
    
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location  = locations.last {
-            
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.0075,0.0075)
-        let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        myMap.setRegion(region, animated: true)
-       
-
-     
-        }
-        self.myMap.showsUserLocation = true
-        
-        manager.stopUpdatingLocation()
-    
-    
-    
-    }
    // below is the code to handle the segmented control for the map style...
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBAction func segmentControl(_ sender: Any) {
@@ -157,7 +140,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         sideMenuConstrain.constant = -150
         
-        print(locationArray)
+        
         manager.delegate = self
         myMap.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -168,6 +151,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.myMap.addAnnotations(locationArray)
         
         myMap.setUserTrackingMode(.follow, animated:true)
+        manager.startUpdatingLocation()
       
     }
    // this function will get called whenever this view controller is about to segue to another viewcontoller.
@@ -257,7 +241,7 @@ extension ViewController: MKMapViewDelegate{
         
         
         if let location = view.annotation as? annotation{
-            print("here\(location)")
+           
             self.currentPlacemark = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             self.directionButtonConstrain.constant = -8
             self.treeNameToDetails = (view.annotation?.title)!
@@ -283,6 +267,34 @@ extension ViewController: MKMapViewDelegate{
     
 }
 
+
+extension ViewController: CLLocationManagerDelegate{
+    
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location  = locations.last {
+            
+            let span: MKCoordinateSpan = MKCoordinateSpanMake(0.0075,0.0075)
+            let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+            let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+            myMap.setRegion(region, animated: true)
+            //myMap.remove(myMap.overlays[0])
+                        print("updates")
+        }
+        self.myMap.showsUserLocation = true
+        
+        print("updates")
+        
+        
+        
+    }
+
+    
+    
+    
+    
+}
 
 
 
