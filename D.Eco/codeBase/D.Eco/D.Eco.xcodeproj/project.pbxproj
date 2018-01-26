@@ -15,6 +15,8 @@
 		42C9F96C1FD77C1900B50070 /* startTourButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 42C9F96B1FD77C1900B50070 /* startTourButton.png */; };
 		42C9F96E1FD77DBD00B50070 /* Fixed Deco Header.png in Resources */ = {isa = PBXBuildFile; fileRef = 42C9F96D1FD77DBD00B50070 /* Fixed Deco Header.png */; };
 		42C9F9701FD7811700B50070 /* 183205-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 42C9F96F1FD7811600B50070 /* 183205-128.png */; };
+		42D247B2201BA968004F141D /* TreeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D247B1201BA968004F141D /* TreeDetailsView.swift */; };
+		42D247B4201BB4AD004F141D /* 32_BigTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D247B3201BB4AD004F141D /* 32_BigTree.png */; };
 		EE4E4A971FBA764200CC1D69 /* TFTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */; };
 		EE7A27F11F72BB4800B6BED5 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7A27F01F72BB4800B6BED5 /* Annotation.swift */; };
 		EEA1FDDA1F70525A00CB43D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1FDD91F70525A00CB43D8 /* AppDelegate.swift */; };
@@ -35,6 +37,8 @@
 		42C9F96B1FD77C1900B50070 /* startTourButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = startTourButton.png; path = "splash screen design/startTourButton.png"; sourceTree = "<group>"; };
 		42C9F96D1FD77DBD00B50070 /* Fixed Deco Header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Fixed Deco Header.png"; path = "splash screen design/Fixed Deco Header.png"; sourceTree = "<group>"; };
 		42C9F96F1FD7811600B50070 /* 183205-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "183205-128.png"; path = "splash screen design/183205-128.png"; sourceTree = "<group>"; };
+		42D247B1201BA968004F141D /* TreeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TreeDetailsView.swift; path = ../TreeDetailsView.swift; sourceTree = "<group>"; };
+		42D247B3201BB4AD004F141D /* 32_BigTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 32_BigTree.png; sourceTree = "<group>"; };
 		EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TFTreeViewController.swift; path = ../TFTreeViewController.swift; sourceTree = "<group>"; };
 		EE7A27F01F72BB4800B6BED5 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		EEA1FDD61F70525A00CB43D8 /* D.Eco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D.Eco.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +78,7 @@
 			children = (
 				42C9F96F1FD7811600B50070 /* 183205-128.png */,
 				42C9F9651FD7781D00B50070 /* splash1.png */,
+				42D247B3201BB4AD004F141D /* 32_BigTree.png */,
 				42C9F96D1FD77DBD00B50070 /* Fixed Deco Header.png */,
 				42C9F96B1FD77C1900B50070 /* startTourButton.png */,
 				42C9F9641FD7781D00B50070 /* splash2.png */,
@@ -111,6 +116,7 @@
 		EEA1FDD81F70525A00CB43D8 /* D.Eco */ = {
 			isa = PBXGroup;
 			children = (
+				42D247B1201BA968004F141D /* TreeDetailsView.swift */,
 				EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */,
 				EEA1FDDB1F70525A00CB43D8 /* ViewController.swift */,
 				EEA1FDDD1F70525A00CB43D8 /* Main.storyboard */,
@@ -207,6 +213,7 @@
 				EEA1FDE11F70525A00CB43D8 /* Assets.xcassets in Resources */,
 				42C9F9681FD7781D00B50070 /* splash1.png in Resources */,
 				42C9F9701FD7811700B50070 /* 183205-128.png in Resources */,
+				42D247B4201BB4AD004F141D /* 32_BigTree.png in Resources */,
 				42C9F9621FD776FB00B50070 /* splashScreen.png in Resources */,
 				42C9F96E1FD77DBD00B50070 /* Fixed Deco Header.png in Resources */,
 				42C9F96C1FD77C1900B50070 /* startTourButton.png in Resources */,
@@ -224,6 +231,7 @@
 			files = (
 				EED097121F77281E00C281FA /* HomeModel.swift in Sources */,
 				EE4E4A971FBA764200CC1D69 /* TFTreeViewController.swift in Sources */,
+				42D247B2201BA968004F141D /* TreeDetailsView.swift in Sources */,
 				4220752A1FC5181E00062E5F /* splashScreenViewController.swift in Sources */,
 				EEA1FDDC1F70525A00CB43D8 /* ViewController.swift in Sources */,
 				EEA1FDDA1F70525A00CB43D8 /* AppDelegate.swift in Sources */,

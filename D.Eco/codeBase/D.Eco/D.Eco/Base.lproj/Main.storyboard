@@ -120,16 +120,17 @@
                         <outlet property="myMap" destination="oD4-Fe-Y3K" id="Jz8-8z-NqT"/>
                         <outlet property="segmentControl" destination="FNg-Kp-zmi" id="8Oc-PN-TY8"/>
                         <outlet property="sideMenuConstrain" destination="4qx-ci-h68" id="IZh-Tm-uM3"/>
+                        <segue destination="CIT-QP-kYL" kind="show" identifier="goToDetailsPage" id="mTW-m4-n2e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1429.5999999999999" y="150.67466266866569"/>
         </scene>
-        <!--View Controller-->
+        <!--Tree Details View-->
         <scene sceneID="MCG-Ef-ICx">
             <objects>
-                <viewController id="CIT-QP-kYL" sceneMemberID="viewController">
+                <viewController id="CIT-QP-kYL" customClass="TreeDetailsView" customModule="D_Eco" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pkO-Zr-YT1"/>
                         <viewControllerLayoutGuide type="bottom" id="NDH-lg-x97"/>
@@ -138,43 +139,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R22-bg-58z">
-                                <rect key="frame" x="67" y="72" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="32_BigTree.png" translatesAutoresizingMaskIntoConstraints="NO" id="R22-bg-58z">
+                                <rect key="frame" x="52" y="71" width="240" height="187"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="187" id="9bh-Ow-p45"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tree Name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47w-1f-IQZ">
-                                <rect key="frame" x="30" y="275" width="112" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47w-1f-IQZ">
+                                <rect key="frame" x="17" y="307" width="340" height="75"/>
+                                <color key="backgroundColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="DD4-VN-6N1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tree common name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcd-DI-9gF">
-                                <rect key="frame" x="30" y="343" width="153" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVE-je-dzr">
+                                <rect key="frame" x="16" y="390" width="340" height="76"/>
+                                <color key="backgroundColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="V7U-Ad-ube"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tree Description " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewN-kL-jTM">
-                                <rect key="frame" x="16" y="401" width="329" height="116"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZl-IG-oKd">
-                                <rect key="frame" x="16" y="595" width="110" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Direction?"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou0-B3-Yp8">
+                                <rect key="frame" x="13" y="610" width="88" height="49"/>
+                                <color key="backgroundColor" red="0.65958762169999996" green="0.1388756186" blue="0.1059458107" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="VoQ-6L-A13"/>
+                                </constraints>
+                                <size key="titleShadowOffset" width="2" height="0.0"/>
+                                <state key="normal" title="Directions?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ng7-C6-Hl9">
+                                <rect key="frame" x="13" y="474" width="343" height="128"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="9DH-a8-feh"/>
+                                </constraints>
+                                <string key="text">Tree Descriptions :   need to add description data in Json for trees ...................................................................................................................................................................................................................................................................................................................................................................................................................</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ou0-B3-Yp8" firstAttribute="top" secondItem="ng7-C6-Hl9" secondAttribute="bottom" constant="8" symbolic="YES" id="05J-tf-Hqu"/>
+                            <constraint firstItem="47w-1f-IQZ" firstAttribute="centerX" secondItem="Ugr-H2-o6i" secondAttribute="centerX" id="0Df-Sb-KtK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R22-bg-58z" secondAttribute="trailing" constant="67" id="AGJ-IS-i8X"/>
+                            <constraint firstItem="ng7-C6-Hl9" firstAttribute="leading" secondItem="Ugr-H2-o6i" secondAttribute="leadingMargin" constant="-3" id="FGY-22-iio"/>
+                            <constraint firstItem="NDH-lg-x97" firstAttribute="top" secondItem="Ou0-B3-Yp8" secondAttribute="bottom" constant="8" symbolic="YES" id="JsT-Po-F2J"/>
+                            <constraint firstItem="47w-1f-IQZ" firstAttribute="leading" secondItem="Ugr-H2-o6i" secondAttribute="leadingMargin" constant="1" id="Lml-OM-JIM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SVE-je-dzr" secondAttribute="trailing" constant="3" id="O8A-mJ-gmR"/>
+                            <constraint firstItem="ng7-C6-Hl9" firstAttribute="top" secondItem="SVE-je-dzr" secondAttribute="bottom" constant="8" symbolic="YES" id="Oe2-FP-tdK"/>
+                            <constraint firstItem="R22-bg-58z" firstAttribute="leading" secondItem="Ugr-H2-o6i" secondAttribute="leadingMargin" constant="36" id="Ra9-Pv-Asb"/>
+                            <constraint firstItem="SVE-je-dzr" firstAttribute="trailing" secondItem="ng7-C6-Hl9" secondAttribute="trailing" id="SLn-db-iYB"/>
+                            <constraint firstItem="SVE-je-dzr" firstAttribute="top" secondItem="47w-1f-IQZ" secondAttribute="bottom" constant="8" symbolic="YES" id="V4j-m0-rxa"/>
+                            <constraint firstItem="R22-bg-58z" firstAttribute="top" secondItem="pkO-Zr-YT1" secondAttribute="bottom" constant="7" id="bVE-CT-mmA"/>
+                            <constraint firstItem="47w-1f-IQZ" firstAttribute="top" secondItem="R22-bg-58z" secondAttribute="bottom" constant="49" id="gCK-GT-OPW"/>
+                            <constraint firstItem="Ou0-B3-Yp8" firstAttribute="leading" secondItem="ng7-C6-Hl9" secondAttribute="leading" id="hve-Wm-E5L"/>
+                            <constraint firstItem="SVE-je-dzr" firstAttribute="leading" secondItem="Ugr-H2-o6i" secondAttribute="leadingMargin" id="qG0-PK-owa"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="treeImage" destination="R22-bg-58z" id="XdP-HQ-MZF"/>
+                        <outlet property="treeName" destination="47w-1f-IQZ" id="MVB-Dw-G07"/>
+                        <outlet property="treeSubtitle" destination="SVE-je-dzr" id="0CD-LC-KTl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C78-tv-EIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2989.5999999999999" y="-725.48725637181417"/>
+            <point key="canvasLocation" x="2813.5999999999999" y="-42.728635682158924"/>
         </scene>
         <!--Tree View Controller-->
         <scene sceneID="wQb-bB-RbW">
@@ -218,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTs-jL-ULh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2444" y="-60.719640179910051"/>
+            <point key="canvasLocation" x="2727" y="857"/>
         </scene>
         <!--Splash Screen View Controller-->
         <scene sceneID="fmH-NF-UVK">
@@ -286,6 +327,7 @@
     </scenes>
     <resources>
         <image name="183205-128.png" width="128" height="128"/>
+        <image name="32_BigTree.png" width="578" height="648"/>
         <image name="Fixed Deco Header.png" width="1117" height="220"/>
         <image name="splash3.png" width="640" height="960"/>
         <image name="startTourButton.png" width="128" height="128"/>

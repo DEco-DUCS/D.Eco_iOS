@@ -17,11 +17,21 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
+    var treeNameToDetails:String?
+    var treeSubtitleToDetails:String?
     
     // this is a var of type CLplacemark that going to hold the tapped annotation from the user
     var currentPlacemark: CLLocation?
     
-    
+    // a funtion that performs segues to the details page for the annotation. 
+    public func goToDetails(){
+        
+        self.performSegue(withIdentifier: "goToDetailsPage", sender: self)
+        
+    }
+    // direction button
+    // apears when user touch an annotation
+    // once it's tapped it will create a route from the user current locaton to the tapped annotation
     @IBAction func directionButton(_ sender: Any) {
         guard let currentPlacemark = currentPlacemark else {
             return
@@ -34,6 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 let geodesic = MKGeodesicPolyline(coordinates: &convertedRouteArray, count: convertedRouteArray.count)
         self.myMap.removeOverlays(self.myMap.overlays)
         self.myMap.add(geodesic)
+        
             
         
         
@@ -107,7 +118,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         myMap.setRegion(region, animated: true)
-        
+       
 
      
         }
@@ -167,6 +178,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             mainViewController.locationArrayForTour = locationArrayForTour
             mainViewController.locationArray = locationArray
         }
+        if(segue.identifier == "goToDetailsPage"){
+            let nextViewController: TreeDetailsView = segue.destination as! TreeDetailsView
+            nextViewController.treePassedName = self.treeNameToDetails
+            nextViewController.treePassedSubtitle = self.treeSubtitleToDetails
+            nextViewController.pressedAnnotation = annotation(title: self.treeNameToDetails!, subtitle: self.treeSubtitleToDetails!, coordinate: (self.currentPlacemark?.coordinate)!)
+            
+            
+        }
         
     }
    
@@ -178,9 +197,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
 
         let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.lineWidth = 3.0
+        renderer.lineWidth = 4.0
         renderer.alpha = 0.5
-        renderer.strokeColor = UIColor.brown
+        renderer.strokeColor = UIColor.blue
 
         return renderer
     }
@@ -203,8 +222,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 extension ViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? annotation{
-          let identifier = "pin"
-          var view: MKPinAnnotationView
+            let identifier = "pin"
+            var view: MKAnnotationView
             if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView{
                 dequeuedView.annotation = annotation
                 view = dequeuedView
@@ -212,7 +231,16 @@ extension ViewController: MKMapViewDelegate{
                 view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x:-5,y:5)
-                view.rightCalloutAccessoryView = UIButton(type:.detailDisclosure) as UIView
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                let annotationImage = UIImage(named: "32_BigTree.png")
+                let imageButton = UIButton(type: .custom)
+                imageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+                imageButton.setImage(annotationImage, for: UIControlState())
+                view.leftCalloutAccessoryView = imageButton
+                
+                
+                
+                
                 
             }
             return view
@@ -232,6 +260,9 @@ extension ViewController: MKMapViewDelegate{
             print("here\(location)")
             self.currentPlacemark = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             self.directionButtonConstrain.constant = -8
+            self.treeNameToDetails = (view.annotation?.title)!
+            self.treeSubtitleToDetails = (view.annotation?.subtitle)!
+            
         }
         
         
@@ -241,7 +272,12 @@ extension ViewController: MKMapViewDelegate{
          self.directionButtonConstrain.constant = -70
     }
     
-    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            self.performSegue(withIdentifier: "goToDetailsPage", sender: self)
+            
+        }
+    }
     
     
     
