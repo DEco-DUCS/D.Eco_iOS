@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4220752A1FC5181E00062E5F /* splashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422075291FC5181E00062E5F /* splashScreenViewController.swift */; };
+		424A8C7A201D616F0066A351 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424A8C79201D616F0066A351 /* TableViewController.swift */; };
 		42C9F9621FD776FB00B50070 /* splashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 42C9F9611FD776FB00B50070 /* splashScreen.png */; };
 		42C9F9661FD7781D00B50070 /* splash3.png in Resources */ = {isa = PBXBuildFile; fileRef = 42C9F9631FD7781C00B50070 /* splash3.png */; };
 		42C9F9671FD7781D00B50070 /* splash2.png in Resources */ = {isa = PBXBuildFile; fileRef = 42C9F9641FD7781D00B50070 /* splash2.png */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		422075291FC5181E00062E5F /* splashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreenViewController.swift; sourceTree = "<group>"; };
+		424A8C79201D616F0066A351 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		42C9F9611FD776FB00B50070 /* splashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splashScreen.png; path = "splash screen design/splashScreen.png"; sourceTree = "<group>"; };
 		42C9F9631FD7781C00B50070 /* splash3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash3.png; sourceTree = "<group>"; };
 		42C9F9641FD7781D00B50070 /* splash2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash2.png; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */,
 				EEA1FDDB1F70525A00CB43D8 /* ViewController.swift */,
 				EEA1FDDD1F70525A00CB43D8 /* Main.storyboard */,
+				424A8C79201D616F0066A351 /* TableViewController.swift */,
 				422075291FC5181E00062E5F /* splashScreenViewController.swift */,
 				428E31F11FD4C1560009A184 /* classes/Models */,
 				EEA1FDD91F70525A00CB43D8 /* AppDelegate.swift */,
@@ -232,6 +235,7 @@
 				EED097121F77281E00C281FA /* HomeModel.swift in Sources */,
 				EE4E4A971FBA764200CC1D69 /* TFTreeViewController.swift in Sources */,
 				42D247B2201BA968004F141D /* TreeDetailsView.swift in Sources */,
+				424A8C7A201D616F0066A351 /* TableViewController.swift in Sources */,
 				4220752A1FC5181E00062E5F /* splashScreenViewController.swift in Sources */,
 				EEA1FDDC1F70525A00CB43D8 /* ViewController.swift in Sources */,
 				EEA1FDDA1F70525A00CB43D8 /* AppDelegate.swift in Sources */,

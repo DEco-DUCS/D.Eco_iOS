@@ -10,13 +10,10 @@ import UIKit
 import MapKit
 import CoreLocation
 
-// TODO: work on the design now
-// done recently, reconstructed the archi of the app.
-// done recently, added another storage to the Homemodel class to get the other tree for the tour.
-// done recently, created another protocos subclass to store the other json object.
+
 
 class ViewController: UIViewController {
-    
+    var polylineContainer: MKPolyline?
     var treeNameToDetails:String?
     var treeSubtitleToDetails:String?
     
@@ -38,15 +35,16 @@ class ViewController: UIViewController {
             return
         }
         let routeArray = [manager.location, currentPlacemark]
-      
+        
         
         var convertedRouteArray = routeArray.map{$0!.coordinate}
-           
-                let geodesic = MKGeodesicPolyline(coordinates: &convertedRouteArray, count: convertedRouteArray.count)
-        self.myMap.removeOverlays(self.myMap.overlays)
-        self.myMap.add(geodesic)
         
-            
+        let geodesic = MKGeodesicPolyline(coordinates: &convertedRouteArray, count: convertedRouteArray.count)
+        self.myMap.removeOverlays(self.myMap.overlays)
+        self.polylineContainer = geodesic
+        self.myMap.add(self.polylineContainer!)
+        
+        
         
         
         
@@ -56,11 +54,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var directionButtonConstrain: NSLayoutConstraint!
     
-  
+    
     
     
     var menuIsHidden: Bool = true
-
+    
     // a constrains outlet to manage the menu view level of aperance.
     @IBOutlet weak var sideMenuConstrain: NSLayoutConstraint!
     
@@ -75,8 +73,8 @@ class ViewController: UIViewController {
             sideMenuConstrain.constant = -150
             menuIsHidden = true
             
-             UIView.animate(withDuration: 0.45, animations:{ self.view.layoutIfNeeded()})
-           
+            UIView.animate(withDuration: 0.45, animations:{ self.view.layoutIfNeeded()})
+            
             
         }
     }
@@ -92,27 +90,27 @@ class ViewController: UIViewController {
     }
     @IBAction func userLocationRefreash(_ sender: Any) {
         
-        self.myMap.setUserTrackingMode(.follow, animated:true)
+        manager.startUpdatingLocation()
         
         
         
     }
     // connecting the map from the mainBoard and refering to it as "myMap".....
     @IBOutlet weak var myMap: MKMapView!
-   // the array that's recieves that data thought the splash screen segue 
+    // the array that's recieves that data thought the splash screen segue
     var locationArray = [annotation]()
     // the second array that stores the other json obejcts to the tree tour.
     // this array will get send throught the segue to the 21 treeviewcontroller.
     var locationArrayForTour = [annotation]()
-
     
-
+    
+    
     
     
     let manager = CLLocationManager()
-   
     
-   // below is the code to handle the segmented control for the map style...
+    
+    // below is the code to handle the segmented control for the map style...
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBAction func segmentControl(_ sender: Any) {
         switch segmentControl.selectedSegmentIndex {
@@ -122,13 +120,13 @@ class ViewController: UIViewController {
         case 1:
             myMap.mapType = MKMapType.hybridFlyover
             break
-       
+            
         default:
             break
         }
-
+        
     }
-
+    
     
     // start get data from Json test code, sep 24th. 
     
@@ -146,21 +144,21 @@ class ViewController: UIViewController {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         
         manager.requestWhenInUseAuthorization()
-                        // edit start:
+        // edit start:
         self.myMap.showsUserLocation = true
         self.myMap.addAnnotations(locationArray)
         
         myMap.setUserTrackingMode(.follow, animated:true)
         manager.startUpdatingLocation()
-      
+        
     }
-   // this function will get called whenever this view controller is about to segue to another viewcontoller.
+    // this function will get called whenever this view controller is about to segue to another viewcontoller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "goToTFTreeViewController"){
             let mainViewController: TFTreeViewController = segue.destination as! TFTreeViewController
             
             mainViewController.locationArrayForTour = locationArrayForTour
-            mainViewController.locationArray = locationArray
+            
         }
         if(segue.identifier == "goToDetailsPage"){
             let nextViewController: TreeDetailsView = segue.destination as! TreeDetailsView
@@ -172,36 +170,36 @@ class ViewController: UIViewController {
         }
         
     }
-   
-//     implemeting a method to handel the drawing the polyline for the route
-//     this is the method when ever the delegate whats to draw something it gets called..
+    
+    //     implemeting a method to handel the drawing the polyline for the route
+    //     this is the method when ever the delegate whats to draw something it gets called..
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let polyline = overlay as? MKPolyline else {
             return MKOverlayRenderer()
         }
-
+        
         let renderer = MKPolylineRenderer(polyline: polyline)
         renderer.lineWidth = 4.0
         renderer.alpha = 0.5
         renderer.strokeColor = UIColor.blue
-
+        
         return renderer
     }
     
     
-   
     
-
     
-
-
-
-        override func didReceiveMemoryWarning() {
+    
+    
+    
+    
+    
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    // code here.....
     
-
 }
 extension ViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -216,7 +214,7 @@ extension ViewController: MKMapViewDelegate{
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x:-5,y:5)
                 view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                let annotationImage = UIImage(named: "32_BigTree.png")
+                let annotationImage = annotation.image
                 let imageButton = UIButton(type: .custom)
                 imageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
                 imageButton.setImage(annotationImage, for: UIControlState())
@@ -228,8 +226,8 @@ extension ViewController: MKMapViewDelegate{
                 
             }
             return view
-        
-        
+            
+            
         }
         return nil
     }
@@ -241,7 +239,7 @@ extension ViewController: MKMapViewDelegate{
         
         
         if let location = view.annotation as? annotation{
-           
+            
             self.currentPlacemark = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             self.directionButtonConstrain.constant = -8
             self.treeNameToDetails = (view.annotation?.title)!
@@ -253,7 +251,7 @@ extension ViewController: MKMapViewDelegate{
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-         self.directionButtonConstrain.constant = -70
+        self.directionButtonConstrain.constant = -70
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -261,6 +259,9 @@ extension ViewController: MKMapViewDelegate{
             self.performSegue(withIdentifier: "goToDetailsPage", sender: self)
             
         }
+    }
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        manager.stopUpdatingLocation()
     }
     
     
@@ -279,9 +280,11 @@ extension ViewController: CLLocationManagerDelegate{
             let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
             let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
             myMap.setRegion(region, animated: true)
-            //myMap.remove(myMap.overlays[0])
-                        print("updates")
+            //            let polyRemovedLocation = [location.coordinate]
+            //            let polyLine = MKPolyline(coordinates: polyRemovedLocation, count: polyRemovedLocation.count)
+            //            self.myMap.remove(polyLine)
         }
+        
         self.myMap.showsUserLocation = true
         
         print("updates")
@@ -289,7 +292,22 @@ extension ViewController: CLLocationManagerDelegate{
         
         
     }
-
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!){
+        if let oldLocationNew = oldLocation as CLLocation?{
+            let oldCoordinates = oldLocationNew.coordinate
+            let newCoordinates = newLocation.coordinate
+            var area = [oldCoordinates, newCoordinates]
+            var polyline = MKPolyline(coordinates: &area, count: area.count)
+            myMap.remove(polyline)
+        }
+        
+        
+        
+        
+        
+        
+    }
+    
     
     
     
