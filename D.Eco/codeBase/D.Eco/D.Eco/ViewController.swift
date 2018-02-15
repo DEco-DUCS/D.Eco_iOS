@@ -207,15 +207,18 @@ extension ViewController: MKMapViewDelegate{
                 view = dequeuedView
             }else{
                 if #available(iOS 11.0, *) {
-                    view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                    view.canShowCallout = true
-                    view.calloutOffset = CGPoint(x:-5,y:5)
-                    view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                   let markerView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                    markerView.glyphText = "⽊"
+                    markerView.canShowCallout = true
+                    markerView.calloutOffset = CGPoint(x:-5,y:5)
+                    markerView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
                     let annotationImage = annotation.image
                     let imageButton = UIButton(type: .custom)
                     imageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
                     imageButton.setImage(annotationImage, for: UIControlState())
-                    view.leftCalloutAccessoryView = imageButton
+                    markerView.leftCalloutAccessoryView = imageButton
+                    
+                    return markerView
                 } else {
                     // Fallback on earlier versions
                     
