@@ -80,7 +80,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // code to handel the header image.
         
-        let titleView = UIImageView(image: UIImage(named: "DEco Tree.png"))
+        let titleView = UIImageView(image: UIImage(named: "Fixed Deco Header.png"))
         self.navigationItem.titleView = titleView
         
         
@@ -234,7 +234,7 @@ extension ViewController: MKMapViewDelegate{
                     
                     subtitleLabel.adjustsFontSizeToFitWidth = true
                     // another Label to hold the tree description
-                    let annotationDescriptionLabel = UILabel(frame: CGRect(x: 0, y: 10, width: 100, height: 70))
+                    let annotationDescriptionLabel = UILabel(frame: CGRect(x: 0, y: 10, width: 110, height: 70))
                     annotationDescriptionLabel.numberOfLines = 10
                     
                     

@@ -75,7 +75,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqO-8u-XRx">
-                                <rect key="frame" x="315" y="566" width="44" height="50"/>
+                                <rect key="frame" x="315" y="522" width="44" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="0D7-5H-wh3"/>
                                     <constraint firstAttribute="height" constant="50" id="3DD-Cw-H0n"/>
@@ -97,13 +97,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="GpP-Nz-3oN" secondAttribute="trailing" constant="-70" id="wc6-Ce-OM4"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="7mX-xN-Qgl">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="ocO-uE-IsF">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="organize" id="ocO-uE-IsF">
                             <connections>
                                 <action selector="sideMenuToggle:" destination="BYZ-38-t0r" id="3VU-gN-llN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="directionButtonConstrain" destination="wc6-Ce-OM4" id="oCm-BE-Hag"/>
                         <outlet property="myMap" destination="oD4-Fe-Y3K" id="Jz8-8z-NqT"/>
@@ -246,7 +248,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou0-B3-Yp8">
-                                <rect key="frame" x="13" y="610" width="88" height="49"/>
+                                <rect key="frame" x="13" y="610" width="88" height="5"/>
                                 <color key="backgroundColor" red="0.65958762169999996" green="0.1388756186" blue="0.1059458107" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="VoQ-6L-A13"/>
@@ -309,7 +311,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="v0j-CG-BxH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHE-DX-s3E">
                                 <rect key="frame" x="283" y="518" width="76" height="92"/>
