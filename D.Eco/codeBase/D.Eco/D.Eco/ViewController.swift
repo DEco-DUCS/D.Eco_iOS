@@ -80,8 +80,10 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // code to handel the header image.
         
-        let titleView = UIImageView(image: UIImage(named: "Fixed Deco Header.png"))
+        let titleView = UIImageView(image: UIImage(named: "DEco Tree.png"))
         self.navigationItem.titleView = titleView
+        
+        
     }
     @IBAction func userLocationRefreash(_ sender: Any) {
         
@@ -203,7 +205,7 @@ extension ViewController: MKMapViewDelegate{
                     
                     
                     
-                    let calloutWidth = NSLayoutConstraint(item: calloutCustomView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
+                    let calloutWidth = NSLayoutConstraint(item: calloutCustomView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant:110)
                     
                     calloutCustomView.addConstraint(calloutWidth)
                     let calloutHeight = NSLayoutConstraint(item: calloutCustomView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 75)
@@ -214,26 +216,35 @@ extension ViewController: MKMapViewDelegate{
                     
                    
                     markerView.calloutOffset = CGPoint(x:-5,y:5)
-                    markerView.rightCalloutAccessoryView = UIButton(type
-                        : .detailDisclosure)
+                    //markerView.rightCalloutAccessoryView = UIButton(type
+                       // : .detailDisclosure)
+                    //markerView.rightCalloutAccessoryView?.frame = CGRect(x:-20, y:-200, width: 30, height: 20)
+                   // markerView.rightCalloutAccessoryView?.reloadInputViews()
                     markerView.clusteringIdentifier = "identifier"
                     let annotationImage = annotation.image
                     let imageButton = UIButton(type: .custom)
                     imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 100)
                     imageButton.setImage(annotationImage, for: UIControlState())
                     markerView.leftCalloutAccessoryView = imageButton
+                    markerView.leftCalloutAccessoryView?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                     // label to hold the subtitile in the new view
-                    let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -20, width: 100, height: 30))
+                    let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -15, width: 80, height: 30))
                     subtitleLabel.text = annotation.subtitle
+                    //subtitleLabel.backgroundColor = #colorLiteral(red: 0.7199488878, green: 0.01742414385, blue: 0.03839535639, alpha: 1)
+                    
                     subtitleLabel.adjustsFontSizeToFitWidth = true
                     // another Label to hold the tree description
-                    let annotationDescription = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 70))
-                    annotationDescription.numberOfLines = 5
+                    let annotationDescriptionLabel = UILabel(frame: CGRect(x: 0, y: 10, width: 100, height: 70))
+                    annotationDescriptionLabel.numberOfLines = 10
                     
-                    annotationDescription.text = "tree description \n goes here"
-                    annotationDescription.adjustsFontSizeToFitWidth = true
                     
-                    calloutCustomView.addSubview(annotationDescription)
+                    
+                    annotationDescriptionLabel.text = "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. "
+                    annotationDescriptionLabel.adjustsFontSizeToFitWidth = true
+                    //annotationDescriptionLabel.backgroundColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
+                
+                    
+                    calloutCustomView.addSubview(annotationDescriptionLabel)
                     calloutCustomView.addSubview(subtitleLabel)
                     markerView.detailCalloutAccessoryView = calloutCustomView
                     markerView.sizeToFit()
@@ -293,7 +304,7 @@ extension ViewController: MKMapViewDelegate{
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView {
+        if control == view.leftCalloutAccessoryView {
             self.performSegue(withIdentifier: "goToDetailsPage", sender: self)
             
         }

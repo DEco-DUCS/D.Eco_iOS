@@ -18,6 +18,7 @@
 		42C9F9701FD7811700B50070 /* 183205-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 42C9F96F1FD7811600B50070 /* 183205-128.png */; };
 		42D247B2201BA968004F141D /* TreeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D247B1201BA968004F141D /* TreeDetailsView.swift */; };
 		42D247B4201BB4AD004F141D /* 32_BigTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D247B3201BB4AD004F141D /* 32_BigTree.png */; };
+		42E77FA620395BB400FC5635 /* DEco Tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E77FA520395BB400FC5635 /* DEco Tree.png */; };
 		EE4E4A971FBA764200CC1D69 /* TFTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */; };
 		EE75599920391482001AD1D3 /* CustomAnnotationCallout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE75599820391482001AD1D3 /* CustomAnnotationCallout.swift */; };
 		EE7A27F11F72BB4800B6BED5 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7A27F01F72BB4800B6BED5 /* Annotation.swift */; };
@@ -43,6 +44,7 @@
 		42C9F96F1FD7811600B50070 /* 183205-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "183205-128.png"; path = "splash screen design/183205-128.png"; sourceTree = "<group>"; };
 		42D247B1201BA968004F141D /* TreeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TreeDetailsView.swift; path = ../TreeDetailsView.swift; sourceTree = "<group>"; };
 		42D247B3201BB4AD004F141D /* 32_BigTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 32_BigTree.png; sourceTree = "<group>"; };
+		42E77FA520395BB400FC5635 /* DEco Tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DEco Tree.png"; sourceTree = SOURCE_ROOT; };
 		EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TFTreeViewController.swift; path = ../TFTreeViewController.swift; sourceTree = "<group>"; };
 		EE75599820391482001AD1D3 /* CustomAnnotationCallout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationCallout.swift; sourceTree = "<group>"; };
 		EE7A27F01F72BB4800B6BED5 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		EE64BAC41F7EE33100A007A2 /* Design File */ = {
 			isa = PBXGroup;
 			children = (
+				42E77FA520395BB400FC5635 /* DEco Tree.png */,
 				42C9F96F1FD7811600B50070 /* 183205-128.png */,
 				42C9F9651FD7781D00B50070 /* splash1.png */,
 				42D247B3201BB4AD004F141D /* 32_BigTree.png */,
@@ -223,6 +226,7 @@
 				42C9F9681FD7781D00B50070 /* splash1.png in Resources */,
 				EE86796E2038DEF10014A6AA /* View.xib in Resources */,
 				42C9F9701FD7811700B50070 /* 183205-128.png in Resources */,
+				42E77FA620395BB400FC5635 /* DEco Tree.png in Resources */,
 				42D247B4201BB4AD004F141D /* 32_BigTree.png in Resources */,
 				42C9F9621FD776FB00B50070 /* splashScreen.png in Resources */,
 				42C9F96E1FD77DBD00B50070 /* Fixed Deco Header.png in Resources */,

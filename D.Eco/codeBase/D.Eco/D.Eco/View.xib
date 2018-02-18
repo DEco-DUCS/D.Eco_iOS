@@ -19,6 +19,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tree Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uid-Um-jUB">
                     <rect key="frame" x="49" y="20" width="276" height="35"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="I0E-oG-47v"/>
                     </constraints>
@@ -32,19 +33,21 @@
                         <constraint firstAttribute="height" constant="200" id="zr1-0r-LsW"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scientific Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myK-7V-gzS">
-                    <rect key="frame" x="16" y="284" width="120" height="39"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Scientific Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myK-7V-gzS">
+                    <rect key="frame" x="16" y="284" width="343" height="56"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="39" id="bAs-q6-UTB"/>
+                        <constraint firstAttribute="height" constant="56" id="bAs-q6-UTB"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaU-is-b7e">
-                    <rect key="frame" x="16" y="331" width="343" height="266"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaU-is-b7e">
+                    <rect key="frame" x="16" y="356" width="343" height="241"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="266" id="zRX-UK-YO4"/>
+                        <constraint firstAttribute="height" constant="241" id="zRX-UK-YO4"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -58,7 +61,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.4941176471" green="0.0" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="myK-7V-gzS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="8FU-gh-50k"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="sSp-7Y-TWS" secondAttribute="bottom" constant="12" id="I2c-zO-mFK"/>
@@ -73,7 +76,7 @@
                 <constraint firstItem="cMl-jo-sC9" firstAttribute="top" secondItem="uid-Um-jUB" secondAttribute="bottom" constant="8" symbolic="YES" id="oSr-gX-Xab"/>
                 <constraint firstItem="sSp-7Y-TWS" firstAttribute="top" secondItem="gaU-is-b7e" secondAttribute="bottom" constant="8" symbolic="YES" id="suS-Ci-i83"/>
                 <constraint firstItem="sSp-7Y-TWS" firstAttribute="leading" secondItem="gaU-is-b7e" secondAttribute="leading" constant="-16" id="uZy-3U-wOz"/>
-                <constraint firstItem="gaU-is-b7e" firstAttribute="top" secondItem="myK-7V-gzS" secondAttribute="bottom" constant="8" symbolic="YES" id="ut2-hr-WTG"/>
+                <constraint firstItem="gaU-is-b7e" firstAttribute="top" secondItem="myK-7V-gzS" secondAttribute="bottom" constant="16" id="ut2-hr-WTG"/>
                 <constraint firstItem="gaU-is-b7e" firstAttribute="leading" secondItem="myK-7V-gzS" secondAttribute="leading" id="znI-WG-s3j"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -84,7 +87,7 @@
                 <outlet property="treeName" destination="uid-Um-jUB" id="Leq-cf-Lja"/>
                 <outlet property="treeSubtitle" destination="myK-7V-gzS" id="4Xu-1B-r4B"/>
             </connections>
-            <point key="canvasLocation" x="-82" y="285"/>
+            <point key="canvasLocation" x="-82.5" y="284.5"/>
         </view>
     </objects>
 </document>
