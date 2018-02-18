@@ -20,6 +20,7 @@
 		42D247B4201BB4AD004F141D /* 32_BigTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D247B3201BB4AD004F141D /* 32_BigTree.png */; };
 		EE4E4A971FBA764200CC1D69 /* TFTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */; };
 		EE7A27F11F72BB4800B6BED5 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7A27F01F72BB4800B6BED5 /* Annotation.swift */; };
+		EE86796E2038DEF10014A6AA /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE86796D2038DEF10014A6AA /* View.xib */; };
 		EEA1FDDA1F70525A00CB43D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1FDD91F70525A00CB43D8 /* AppDelegate.swift */; };
 		EEA1FDDC1F70525A00CB43D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA1FDDB1F70525A00CB43D8 /* ViewController.swift */; };
 		EEA1FDDF1F70525A00CB43D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA1FDDD1F70525A00CB43D8 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		42D247B3201BB4AD004F141D /* 32_BigTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 32_BigTree.png; sourceTree = "<group>"; };
 		EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TFTreeViewController.swift; path = ../TFTreeViewController.swift; sourceTree = "<group>"; };
 		EE7A27F01F72BB4800B6BED5 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		EE86796D2038DEF10014A6AA /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		EEA1FDD61F70525A00CB43D8 /* D.Eco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D.Eco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA1FDD91F70525A00CB43D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEA1FDDB1F70525A00CB43D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */,
 				EEA1FDDB1F70525A00CB43D8 /* ViewController.swift */,
 				EEA1FDDD1F70525A00CB43D8 /* Main.storyboard */,
+				EE86796D2038DEF10014A6AA /* View.xib */,
 				424A8C79201D616F0066A351 /* TableViewController.swift */,
 				422075291FC5181E00062E5F /* splashScreenViewController.swift */,
 				428E31F11FD4C1560009A184 /* classes/Models */,
@@ -215,6 +218,7 @@
 				EEA1FDE41F70525A00CB43D8 /* LaunchScreen.storyboard in Resources */,
 				EEA1FDE11F70525A00CB43D8 /* Assets.xcassets in Resources */,
 				42C9F9681FD7781D00B50070 /* splash1.png in Resources */,
+				EE86796E2038DEF10014A6AA /* View.xib in Resources */,
 				42C9F9701FD7811700B50070 /* 183205-128.png in Resources */,
 				42D247B4201BB4AD004F141D /* 32_BigTree.png in Resources */,
 				42C9F9621FD776FB00B50070 /* splashScreen.png in Resources */,

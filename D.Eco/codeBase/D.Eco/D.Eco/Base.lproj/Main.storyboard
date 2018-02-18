@@ -26,17 +26,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FNg-Kp-zmi">
-                                <rect key="frame" x="60" y="631" width="254" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Standard"/>
-                                    <segment title="HybridFlyover"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="NRR-yz-opS"/>
-                                </connections>
-                            </segmentedControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Fixed Deco Header.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6GN-Gx-fTL">
                                 <rect key="frame" x="-742" y="-155" width="1117" height="220"/>
                                 <color key="backgroundColor" red="0.52687108520000003" green="0.1270085722" blue="0.078507170079999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -118,7 +107,6 @@
                     <connections>
                         <outlet property="directionButtonConstrain" destination="wc6-Ce-OM4" id="oCm-BE-Hag"/>
                         <outlet property="myMap" destination="oD4-Fe-Y3K" id="Jz8-8z-NqT"/>
-                        <outlet property="segmentControl" destination="FNg-Kp-zmi" id="8Oc-PN-TY8"/>
                         <outlet property="sideMenuConstrain" destination="4qx-ci-h68" id="IZh-Tm-uM3"/>
                         <segue destination="CIT-QP-kYL" kind="show" identifier="goToDetailsPage" id="mTW-m4-n2e"/>
                     </connections>

@@ -107,20 +107,7 @@ class ViewController: UIViewController {
     
     // below is the code to handle the segmented control for the map style...
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    @IBAction func segmentControl(_ sender: Any) {
-        switch segmentControl.selectedSegmentIndex {
-        case 0:
-            myMap.mapType = MKMapType.standard
-            break
-        case 1:
-            myMap.mapType = MKMapType.hybridFlyover
-            break
-            
-        default:
-            break
-        }
-        
-    }
+  
     
     
     // start get data from Json test code, sep 24th. 
@@ -145,6 +132,7 @@ class ViewController: UIViewController {
         
         myMap.setUserTrackingMode(.follow, animated:true)
         manager.startUpdatingLocation()
+        
         
     }
     // this function will get called whenever this view controller is about to segue to another viewcontoller.
@@ -193,7 +181,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    // code here.....
+
     
 }
 
@@ -206,20 +194,57 @@ extension ViewController: MKMapViewDelegate{
                 dequeuedView.annotation = annotation
                 view = dequeuedView
             }else{
+                
                 if #available(iOS 11.0, *) {
                    let markerView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                    // another view to hold the addtional data for the call out, such as a label for the subtitle and the description.
+                    let calloutCustomView = UIView()
+                 
+                    
+                    
+                    
+                    let calloutWidth = NSLayoutConstraint(item: calloutCustomView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
+                    
+                    calloutCustomView.addConstraint(calloutWidth)
+                    let calloutHeight = NSLayoutConstraint(item: calloutCustomView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 75)
+                    calloutCustomView.addConstraint(calloutHeight)
+                    
+ 
                     markerView.glyphText = "⽊"
-                    markerView.canShowCallout = true
+                    
+                   
                     markerView.calloutOffset = CGPoint(x:-5,y:5)
-                    markerView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                    markerView.rightCalloutAccessoryView = UIButton(type
+                        : .detailDisclosure)
+                    markerView.clusteringIdentifier = "identifier"
                     let annotationImage = annotation.image
                     let imageButton = UIButton(type: .custom)
-                    imageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+                    imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 100)
                     imageButton.setImage(annotationImage, for: UIControlState())
                     markerView.leftCalloutAccessoryView = imageButton
+                    // label to hold the subtitile in the new view
+                    let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -20, width: 100, height: 30))
+                    subtitleLabel.text = annotation.subtitle
+                    subtitleLabel.adjustsFontSizeToFitWidth = false
+                    // another Label to hold the tree description
+                    let annotationDescription = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 70))
+                    annotationDescription.numberOfLines = 5
+                    
+                    annotationDescription.text = "tree description \n goes here"
+                    annotationDescription.adjustsFontSizeToFitWidth = true
+                    
+                    calloutCustomView.addSubview(annotationDescription)
+                    calloutCustomView.addSubview(subtitleLabel)
+                    markerView.detailCalloutAccessoryView = calloutCustomView
+                    markerView.sizeToFit()
+                    markerView.canShowCallout = true
+                    
+                    
+                    
                     
                     return markerView
                 } else {
+                    
                     // Fallback on earlier versions
                     
                     view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
@@ -231,16 +256,13 @@ extension ViewController: MKMapViewDelegate{
                     imageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
                     imageButton.setImage(annotationImage, for: UIControlState())
                     view.leftCalloutAccessoryView = imageButton
+                    
+                    
                 }
-                
-               
-                
-                
-                
-                
+           
             }
-            return view
             
+            return view
             
         }
         return nil
@@ -258,6 +280,8 @@ extension ViewController: MKMapViewDelegate{
             self.directionButtonConstrain.constant = -8
             self.treeNameToDetails = (view.annotation?.title)!
             self.treeSubtitleToDetails = (view.annotation?.subtitle)!
+            
+            
             
         }
         
@@ -280,6 +304,9 @@ extension ViewController: MKMapViewDelegate{
     
     
     
+    
+    
+    
 }
 
 
@@ -294,9 +321,7 @@ extension ViewController: CLLocationManagerDelegate{
             let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
             let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
             myMap.setRegion(region, animated: true)
-            //            let polyRemovedLocation = [location.coordinate]
-            //            let polyLine = MKPolyline(coordinates: polyRemovedLocation, count: polyRemovedLocation.count)
-            //            self.myMap.remove(polyLine)
+           myMap.mapType = MKMapType.hybridFlyover
         }
         
         self.myMap.showsUserLocation = true
@@ -311,7 +336,7 @@ extension ViewController: CLLocationManagerDelegate{
             let oldCoordinates = oldLocationNew.coordinate
             let newCoordinates = newLocation.coordinate
             var area = [oldCoordinates, newCoordinates]
-            var polyline = MKPolyline(coordinates: &area, count: area.count)
+            let polyline = MKPolyline(coordinates: &area, count: area.count)
             myMap.remove(polyline)
         }
         
