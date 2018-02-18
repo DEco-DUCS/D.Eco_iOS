@@ -225,7 +225,7 @@ extension ViewController: MKMapViewDelegate{
                     // label to hold the subtitile in the new view
                     let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -20, width: 100, height: 30))
                     subtitleLabel.text = annotation.subtitle
-                    subtitleLabel.adjustsFontSizeToFitWidth = false
+                    subtitleLabel.adjustsFontSizeToFitWidth = true
                     // another Label to hold the tree description
                     let annotationDescription = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 70))
                     annotationDescription.numberOfLines = 5
