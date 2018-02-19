@@ -14,10 +14,20 @@ class annotation: NSObject, MKAnnotation{
     var subtitle: String?
     var coordinate: CLLocationCoordinate2D
     var image: UIImage = UIImage(named:"32_BigTree")!
+    var annotationDescription:String?
+    
     init(title:String, subtitle: String, coordinate: CLLocationCoordinate2D) {
         self.title = title
         self.subtitle = subtitle
         self.coordinate = coordinate
+    }
+    init(title:String, subtitle:String, coordinates:CLLocationCoordinate2D,annotationImage:String,description:String){
+        
+        self.title = title
+        self.subtitle = subtitle
+        self.coordinate = coordinates
+        self.annotationDescription = description
+        self.image = UIImage(named: annotationImage)!
     }
 
 

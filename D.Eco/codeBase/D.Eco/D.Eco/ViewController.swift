@@ -201,7 +201,9 @@ extension ViewController: MKMapViewDelegate{
                    let markerView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                     // another view to hold the addtional data for the call out, such as a label for the subtitle and the description.
                     let calloutCustomView = UIView()
-                 
+                    let myCustomButton = UIButton(type: .detailDisclosure)
+                    myCustomButton.frame = CGRect(x: 95, y: -20, width: 20, height: 20)
+                    myCustomButton.accessibilityIdentifier = "viewCalloutButton"
                     
                     
                     
@@ -215,22 +217,27 @@ extension ViewController: MKMapViewDelegate{
                     markerView.glyphText = "⽊"
                     
                    
-                    markerView.calloutOffset = CGPoint(x:-5,y:5)
-                    //markerView.rightCalloutAccessoryView = UIButton(type
-                       // : .detailDisclosure)
+                    markerView.calloutOffset = CGPoint(x:0,y:0)
+                    //markerView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
                     //markerView.rightCalloutAccessoryView?.frame = CGRect(x:-20, y:-200, width: 30, height: 20)
                    // markerView.rightCalloutAccessoryView?.reloadInputViews()
+                    // call the cluster that show the number of inner annotations
                     markerView.clusteringIdentifier = "identifier"
+                   // creating the image and swaping the annotations image with it.
                     let annotationImage = annotation.image
+                    // creating the image view as a clickable button
                     let imageButton = UIButton(type: .custom)
+                    // assigning the frame attributes to locate and resize the defualt right callout
                     imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 100)
                     imageButton.setImage(annotationImage, for: UIControlState())
+                    // swaping the image view with the lef tcallout view
                     markerView.leftCalloutAccessoryView = imageButton
+                    // assigning a background button with it
                     markerView.leftCalloutAccessoryView?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                     // label to hold the subtitile in the new view
-                    let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -15, width: 80, height: 30))
+                    let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -20, width: 80, height: 30))
                     subtitleLabel.text = annotation.subtitle
-                    //subtitleLabel.backgroundColor = #colorLiteral(red: 0.7199488878, green: 0.01742414385, blue: 0.03839535639, alpha: 1)
+                    //  subtitleLabel.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                     
                     subtitleLabel.adjustsFontSizeToFitWidth = true
                     // another Label to hold the tree description
@@ -246,9 +253,15 @@ extension ViewController: MKMapViewDelegate{
                     
                     calloutCustomView.addSubview(annotationDescriptionLabel)
                     calloutCustomView.addSubview(subtitleLabel)
+                    //calloutCustomView.addSubview(myCustomButton)
+                    
+                    
+                    
                     markerView.detailCalloutAccessoryView = calloutCustomView
                     markerView.sizeToFit()
                     markerView.canShowCallout = true
+                    print("this is what the subview are:    ")
+                   // markerView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                     
                     
                     
@@ -260,7 +273,7 @@ extension ViewController: MKMapViewDelegate{
                     
                     view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                     view.canShowCallout = true
-                    view.calloutOffset = CGPoint(x:-5,y:5)
+                    view.calloutOffset = CGPoint(x:-50,y:-50)
                     view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
                     let annotationImage = annotation.image
                     let imageButton = UIButton(type: .custom)
@@ -306,9 +319,12 @@ extension ViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.leftCalloutAccessoryView {
             self.performSegue(withIdentifier: "goToDetailsPage", sender: self)
-            
+
         }
+       
     }
+    
+  
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         manager.stopUpdatingLocation()
     }
