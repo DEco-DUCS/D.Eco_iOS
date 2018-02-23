@@ -136,6 +136,8 @@ class HomeModel:NSObject {
                 let SUBTITLE_KEY = "scientific_name"
                 let LATITUDE_KEY = "latitude"
                 let LONGITUDE_KEY = "longitude"
+                let DESCRIPTION_KEY = "description"
+                let FILE_PATH = "filepath"
                 // parse and get the  name and discription.
                 let titleString:String = currentAnnotaionArray[TITLE_KEY] as! String
                 let subtitleString:String  = currentAnnotaionArray[SUBTITLE_KEY] as! String

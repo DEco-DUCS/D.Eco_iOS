@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     var currentPlacemark: CLLocation?
     
     // a funtion that performs segues to the details page for the annotation. 
-    public func goToDetails(){
+    @objc public func goToDetails(_sender: UIButton){
         
         self.performSegue(withIdentifier: "goToDetailsPage", sender: self)
         
@@ -202,19 +202,20 @@ extension ViewController: MKMapViewDelegate{
                     // another view to hold the addtional data for the call out, such as a label for the subtitle and the description.
                     let calloutCustomView = UIView()
                     let myCustomButton = UIButton(type: .detailDisclosure)
-                    myCustomButton.frame = CGRect(x: 95, y: -20, width: 20, height: 20)
+                    myCustomButton.isUserInteractionEnabled = true
+                    myCustomButton.frame = CGRect(x: 95, y: 0, width: 20, height: 20)
                     myCustomButton.accessibilityIdentifier = "viewCalloutButton"
                     
                     
                     
-                    let calloutWidth = NSLayoutConstraint(item: calloutCustomView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant:110)
+                    let calloutWidth = NSLayoutConstraint(item: calloutCustomView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant:120)
                     
                     calloutCustomView.addConstraint(calloutWidth)
-                    let calloutHeight = NSLayoutConstraint(item: calloutCustomView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 75)
+                    let calloutHeight = NSLayoutConstraint(item: calloutCustomView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 90)
                     calloutCustomView.addConstraint(calloutHeight)
                     
  
-                    markerView.glyphText = "⽊"
+                    //markerView.glyphText = "⽊"
                     
                    
                     markerView.calloutOffset = CGPoint(x:0,y:0)
@@ -228,39 +229,37 @@ extension ViewController: MKMapViewDelegate{
                     // creating the image view as a clickable button
                     let imageButton = UIButton(type: .custom)
                     // assigning the frame attributes to locate and resize the defualt right callout
-                    imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 100)
+                    imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
                     imageButton.setImage(annotationImage, for: UIControlState())
                     // swaping the image view with the lef tcallout view
                     markerView.leftCalloutAccessoryView = imageButton
                     // assigning a background button with it
                     markerView.leftCalloutAccessoryView?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                     // label to hold the subtitile in the new view
-                    let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -20, width: 80, height: 30))
+                    let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -10, width: 80, height: 30))
                     subtitleLabel.text = annotation.subtitle
                     //  subtitleLabel.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                     
                     subtitleLabel.adjustsFontSizeToFitWidth = true
                     // another Label to hold the tree description
-                    let annotationDescriptionLabel = UILabel(frame: CGRect(x: 0, y: 10, width: 110, height: 70))
+                    let annotationDescriptionLabel = UILabel(frame: CGRect(x: 0, y: 20, width: 120, height: 70))
                     annotationDescriptionLabel.numberOfLines = 10
-                    
-                    
+                    //calloutCustomView.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
                     
                     annotationDescriptionLabel.text = "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. "
-                    annotationDescriptionLabel.adjustsFontSizeToFitWidth = true
-                    //annotationDescriptionLabel.backgroundColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
-                
+                    annotationDescriptionLabel.adjustsFontSizeToFitWidth = true                    //annotationDescriptionLabel.backgroundColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
+                    myCustomButton.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
                     
                     calloutCustomView.addSubview(annotationDescriptionLabel)
                     calloutCustomView.addSubview(subtitleLabel)
-                    //calloutCustomView.addSubview(myCustomButton)
+                    calloutCustomView.addSubview(myCustomButton)
                     
                     
                     
                     markerView.detailCalloutAccessoryView = calloutCustomView
-                    markerView.sizeToFit()
+                    
                     markerView.canShowCallout = true
-                    print("this is what the subview are:    ")
+                    
                    // markerView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                     
                     
@@ -291,10 +290,7 @@ extension ViewController: MKMapViewDelegate{
         }
         return nil
     }
-    
-    
-    
-    
+  
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         
@@ -305,11 +301,8 @@ extension ViewController: MKMapViewDelegate{
             self.treeNameToDetails = (view.annotation?.title)!
             self.treeSubtitleToDetails = (view.annotation?.subtitle)!
             
-            
-            
         }
-        
-        
+     
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -329,13 +322,8 @@ extension ViewController: MKMapViewDelegate{
         manager.stopUpdatingLocation()
     }
     
-    
-    
-    
-    
-    
+   
 }
-
 
 extension ViewController: CLLocationManagerDelegate{
     
