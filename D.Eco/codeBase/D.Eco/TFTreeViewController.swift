@@ -90,7 +90,10 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
     }
     
-
+// mapview delegate funtion to handle user tacking..
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        manager.stopUpdatingLocation()
+    }
     
     
     // functions that returns the colsest annotation to user locations
@@ -174,9 +177,12 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
             let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
             myMap.setRegion(region, animated: false)
+            myMap.mapType = MKMapType.hybridFlyover
             
             
         }
+        
+        
         
         
         
