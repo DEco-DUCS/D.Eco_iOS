@@ -33,24 +33,12 @@ class ViewController: UIViewController {
     
     @IBAction func cancelRouteButton(_ sender: UIButton) {
         self.cancelRouteButtonConstrains.constant = 0
+        manager.stopUpdatingLocation()
         self.myMap.removeOverlays(self.myMap.overlays)
             }
     
     @IBAction func directionButton(_ sender: Any) {
-        self.directionButtonConstrain.constant = -70
-        self.cancelRouteButtonConstrains.constant = 45
-        guard let currentPlacemark = currentPlacemark else {
-            return
-        }
-        let routeArray = [manager.location, currentPlacemark]
-        
-        
-        var convertedRouteArray = routeArray.map{$0!.coordinate}
-        
-        let geodesic = MKGeodesicPolyline(coordinates: &convertedRouteArray, count: convertedRouteArray.count)
-        self.myMap.removeOverlays(self.myMap.overlays)
-        self.polylineContainer = geodesic
-        self.myMap.add(self.polylineContainer!)
+       manager.startUpdatingLocation()
         
     }
     // below is the constrain for the direction button. THE DEFUAL IS SET TO -8; to maintain autoLayout
@@ -347,18 +335,21 @@ extension ViewController: CLLocationManagerDelegate{
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location  = locations.last {
-            
-            let span: MKCoordinateSpan = MKCoordinateSpanMake(0.0075,0.0075)
-            let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-            let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-            myMap.setRegion(region, animated: true)
-           
+        self.directionButtonConstrain.constant = -70
+        self.cancelRouteButtonConstrains.constant = 45
+        guard let currentPlacemark = currentPlacemark else {
+            return
         }
+        let routeArray = [locations.last, currentPlacemark]
         
-        self.myMap.showsUserLocation = true
         
-        print("updates")
+        var convertedRouteArray = routeArray.map{$0!.coordinate}
+        
+        let geodesic = MKGeodesicPolyline(coordinates: &convertedRouteArray, count: convertedRouteArray.count)
+        
+        self.myMap.removeOverlays(self.myMap.overlays)
+        self.polylineContainer = geodesic
+        self.myMap.add(self.polylineContainer!)
         
         
         
