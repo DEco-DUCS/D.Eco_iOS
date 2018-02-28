@@ -19,8 +19,9 @@ class ViewController: UIViewController {
     
     // this is a var of type CLplacemark that going to hold the tapped annotation from the user
     var currentPlacemark: CLLocation?
-    
-    // a funtion that performs segues to the details page for the annotation. 
+    // set constrains to 0 to make it disappear. and 45 to show
+    @IBOutlet weak var cancelRouteButtonConstrains: NSLayoutConstraint!
+    // a funtion that performs segues to the details page for the annotation.
     @objc public func goToDetails(_sender: UIButton){
         
         self.performSegue(withIdentifier: "goToDetailsPage", sender: self)
@@ -30,7 +31,14 @@ class ViewController: UIViewController {
     // apears when user touch an annotation
     // once it's tapped it will create a route from the user current locaton to the tapped annotation
     
+    @IBAction func cancelRouteButton(_ sender: UIButton) {
+        self.cancelRouteButtonConstrains.constant = 0
+        self.myMap.removeOverlays(self.myMap.overlays)
+            }
+    
     @IBAction func directionButton(_ sender: Any) {
+        self.directionButtonConstrain.constant = -70
+        self.cancelRouteButtonConstrains.constant = 45
         guard let currentPlacemark = currentPlacemark else {
             return
         }
@@ -61,12 +69,13 @@ class ViewController: UIViewController {
     @IBAction func sideMenuToggle(_ sender: UIBarButtonItem) {
         if menuIsHidden {
             sideMenuConstrain.constant = 0
-            menuIsHidden = false
+            menuIsHidden = !menuIsHidden
+            
             UIView.animate(withDuration: 0.45, animations:{ self.view.layoutIfNeeded()})
             
         }else{
             sideMenuConstrain.constant = -150
-            menuIsHidden = true
+            menuIsHidden = !menuIsHidden
             
             UIView.animate(withDuration: 0.45, animations:{ self.view.layoutIfNeeded()})
             
@@ -80,14 +89,16 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // code to handel the header image.
         
-        let titleView = UIImageView(image: UIImage(named: "Fixed Deco Header.png"))
-        self.navigationItem.titleView = titleView
-        
+        //let titleView = UIImageView(image: UIImage(named: "Fixed Deco Header.png"))
+        //self.navigationItem.titleView = titleView
+    
         
     }
     @IBAction func userLocationRefreash(_ sender: Any) {
         
-        manager.startUpdatingLocation()
+        //manager.startUpdatingLocation()
+         myMap.setUserTrackingMode(.follow, animated:true)
+        
         
         
         
@@ -110,7 +121,17 @@ class ViewController: UIViewController {
     // below is the code to handle the segmented control for the map style...
     @IBOutlet weak var segmentControl: UISegmentedControl!
   
-    
+    public func mapSetUp(){
+        
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.0075,0.0075)
+        let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake((manager.location?.coordinate.latitude)!, (manager.location?.coordinate.longitude)!)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        myMap.setRegion(region, animated: true)
+        
+        
+        
+        
+    }
     
     // start get data from Json test code, sep 24th. 
     
@@ -121,8 +142,7 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
         sideMenuConstrain.constant = -150
-        
-        
+        cancelRouteButtonConstrains.constant = 0
         manager.delegate = self
         myMap.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -133,8 +153,9 @@ class ViewController: UIViewController {
         self.myMap.addAnnotations(locationArray)
         
         myMap.setUserTrackingMode(.follow, animated:true)
-        manager.startUpdatingLocation()
+        myMap.mapType = MKMapType.hybridFlyover
         
+        mapSetUp()
         
     }
     // this function will get called whenever this view controller is about to segue to another viewcontoller.
@@ -202,27 +223,24 @@ extension ViewController: MKMapViewDelegate{
                     // another view to hold the addtional data for the call out, such as a label for the subtitle and the description.
                     let calloutCustomView = UIView()
                     let myCustomButton = UIButton(type: .detailDisclosure)
-                    myCustomButton.isUserInteractionEnabled = true
+                    //myCustomButton.isUserInteractionEnabled = true
                     myCustomButton.frame = CGRect(x: 95, y: 0, width: 20, height: 20)
                     myCustomButton.accessibilityIdentifier = "viewCalloutButton"
                     
                     
-                    
+                    //myCustomButton.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
                     let calloutWidth = NSLayoutConstraint(item: calloutCustomView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant:120)
                     
                     calloutCustomView.addConstraint(calloutWidth)
                     let calloutHeight = NSLayoutConstraint(item: calloutCustomView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 90)
                     calloutCustomView.addConstraint(calloutHeight)
                     
- 
+                    
                     //markerView.glyphText = "⽊"
                     
                    
                     markerView.calloutOffset = CGPoint(x:0,y:0)
-                    //markerView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                    //markerView.rightCalloutAccessoryView?.frame = CGRect(x:-20, y:-200, width: 30, height: 20)
-                   // markerView.rightCalloutAccessoryView?.reloadInputViews()
-                    // call the cluster that show the number of inner annotations
+                    
                     markerView.clusteringIdentifier = "identifier"
                    // creating the image and swaping the annotations image with it.
                     let annotationImage = annotation.image
@@ -243,24 +261,25 @@ extension ViewController: MKMapViewDelegate{
                     subtitleLabel.adjustsFontSizeToFitWidth = true
                     // another Label to hold the tree description
                     let annotationDescriptionLabel = UILabel(frame: CGRect(x: 0, y: 20, width: 120, height: 70))
-                    annotationDescriptionLabel.numberOfLines = 10
+                    annotationDescriptionLabel.numberOfLines = 5
                     //calloutCustomView.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
                     
                     annotationDescriptionLabel.text = "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. "
-                    annotationDescriptionLabel.adjustsFontSizeToFitWidth = true                    //annotationDescriptionLabel.backgroundColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
+                   // annotationDescriptionLabel.adjustsFontSizeToFitWidth = true                    //annotationDescriptionLabel.backgroundColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
                     myCustomButton.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
-                    
+                    annotationDescriptionLabel.adjustsFontSizeToFitWidth = false
+                    annotationDescriptionLabel.font = UIFont.systemFont(ofSize: 9.0)
+                    //annotationDescriptionLabel.font = UIFont(name: "identifier", size: 1)
                     calloutCustomView.addSubview(annotationDescriptionLabel)
                     calloutCustomView.addSubview(subtitleLabel)
                     calloutCustomView.addSubview(myCustomButton)
                     
                     
                     
-                    markerView.detailCalloutAccessoryView = calloutCustomView
                     
+                    markerView.detailCalloutAccessoryView = calloutCustomView
                     markerView.canShowCallout = true
                     
-                   // markerView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                     
                     
                     
@@ -318,9 +337,7 @@ extension ViewController: MKMapViewDelegate{
     }
     
   
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        manager.stopUpdatingLocation()
-    }
+    
     
    
 }
@@ -336,7 +353,7 @@ extension ViewController: CLLocationManagerDelegate{
             let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
             let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
             myMap.setRegion(region, animated: true)
-           myMap.mapType = MKMapType.hybridFlyover
+           
         }
         
         self.myMap.showsUserLocation = true

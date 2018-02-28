@@ -101,7 +101,8 @@ class HomeModel:NSObject {
             
                 
                 locationArray.append(currentAnnotaion)
-                print(location)
+                
+                
             }// Json for loop end
             
             // pass the obejct back useing the delegate; 
@@ -155,7 +156,7 @@ class HomeModel:NSObject {
                 
                 
                 locationArrayForTour.append(currentAnnotaion)
-                print(location)
+                
             }// for loop end
             
             // pass the obejct back useing the delegate;

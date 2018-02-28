@@ -34,42 +34,12 @@
                                 <rect key="frame" x="0.0" y="64" width="88" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQf-WE-y5G">
-                                <rect key="frame" x="0.0" y="64" width="150" height="185"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLU-Z1-8wb">
-                                        <rect key="frame" x="5" y="10" width="140" height="33"/>
-                                        <color key="backgroundColor" red="0.4941176471" green="0.0" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <size key="titleShadowOffset" width="0.0" height="0.5"/>
-                                        <state key="normal" title="Take a Tour">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="wSJ-i6-XiB" kind="show" identifier="goToTFTreeViewController" id="ndN-W9-EsJ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="SLU-Z1-8wb" firstAttribute="top" secondItem="YQf-WE-y5G" secondAttribute="top" constant="10" id="8hN-Oo-8iF"/>
-                                    <constraint firstItem="SLU-Z1-8wb" firstAttribute="leading" secondItem="YQf-WE-y5G" secondAttribute="leading" constant="5" id="9zp-kW-Cd0"/>
-                                    <constraint firstAttribute="height" constant="185" id="XRG-v0-f7K"/>
-                                    <constraint firstAttribute="trailing" secondItem="SLU-Z1-8wb" secondAttribute="trailing" constant="5" id="imf-Vy-YRS"/>
-                                    <constraint firstAttribute="width" constant="150" id="y4E-E4-tng"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpP-Nz-3oN">
-                                <rect key="frame" x="379" y="83" width="50" height="45"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpP-Nz-3oN">
+                                <rect key="frame" x="381" y="83" width="48" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="ziK-3e-R0g"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <state key="normal" title="Directions?">
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
-                                </state>
+                                <state key="normal" image="routeIcon"/>
                                 <connections>
                                     <action selector="directionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MOZ-Ey-sbS"/>
                                 </connections>
@@ -85,6 +55,50 @@
                                     <action selector="userLocationRefreash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OKX-qs-2Oh"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQf-WE-y5G">
+                                <rect key="frame" x="0.0" y="64" width="150" height="185"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fixed Deco Header.png" translatesAutoresizingMaskIntoConstraints="NO" id="EQq-7G-xFv">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLU-Z1-8wb">
+                                        <rect key="frame" x="5" y="44" width="140" height="33"/>
+                                        <color key="backgroundColor" red="0.52687108520000003" green="0.1270085722" blue="0.078507170079999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <size key="titleShadowOffset" width="0.5" height="0.5"/>
+                                        <state key="normal" title="Take a Tour">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="wSJ-i6-XiB" kind="show" identifier="goToTFTreeViewController" id="ndN-W9-EsJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.6023464134761265" alpha="0.76515735035211263" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SLU-Z1-8wb" firstAttribute="centerX" secondItem="YQf-WE-y5G" secondAttribute="centerX" id="3cv-QG-dtz"/>
+                                    <constraint firstItem="EQq-7G-xFv" firstAttribute="leading" secondItem="YQf-WE-y5G" secondAttribute="leading" id="724-yC-eCc"/>
+                                    <constraint firstItem="SLU-Z1-8wb" firstAttribute="top" secondItem="EQq-7G-xFv" secondAttribute="bottom" constant="15" id="GNC-Uh-Wxx"/>
+                                    <constraint firstItem="EQq-7G-xFv" firstAttribute="top" secondItem="YQf-WE-y5G" secondAttribute="top" id="Kse-KR-N83"/>
+                                    <constraint firstItem="SLU-Z1-8wb" firstAttribute="top" secondItem="EQq-7G-xFv" secondAttribute="bottom" constant="14" id="Q12-ld-Hlk"/>
+                                    <constraint firstAttribute="height" constant="185" id="XRG-v0-f7K"/>
+                                    <constraint firstItem="SLU-Z1-8wb" firstAttribute="leading" secondItem="YQf-WE-y5G" secondAttribute="leading" constant="5" id="kfQ-s5-gRJ"/>
+                                    <constraint firstItem="SLU-Z1-8wb" firstAttribute="top" secondItem="YQf-WE-y5G" secondAttribute="top" constant="44" id="pj7-o2-gfo"/>
+                                    <constraint firstAttribute="width" constant="150" id="y4E-E4-tng"/>
+                                    <constraint firstItem="SLU-Z1-8wb" firstAttribute="centerX" secondItem="EQq-7G-xFv" secondAttribute="centerX" id="yBt-XQ-VDy"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jH-Wp-dD6">
+                                <rect key="frame" x="325" y="83" width="48" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="yuP-YY-6xa"/>
+                                </constraints>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="cancelRouteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IAK-as-K8U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -93,13 +107,16 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BqO-8u-XRx" secondAttribute="bottom" constant="51" id="LVh-Rh-KlU"/>
                             <constraint firstItem="YQf-WE-y5G" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="QpI-26-fzi"/>
                             <constraint firstItem="GpP-Nz-3oN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="83" id="T26-IO-KAq"/>
+                            <constraint firstItem="GpP-Nz-3oN" firstAttribute="leading" secondItem="7jH-Wp-dD6" secondAttribute="trailing" constant="8" symbolic="YES" id="Wjh-Iy-WdF"/>
                             <constraint firstItem="GpP-Nz-3oN" firstAttribute="top" secondItem="6GN-Gx-fTL" secondAttribute="bottom" constant="18" id="btF-gA-8tv"/>
+                            <constraint firstItem="7jH-Wp-dD6" firstAttribute="top" secondItem="GpP-Nz-3oN" secondAttribute="top" id="rOr-mA-33W"/>
+                            <constraint firstItem="7jH-Wp-dD6" firstAttribute="bottom" secondItem="GpP-Nz-3oN" secondAttribute="bottom" id="s2P-NC-TvV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GpP-Nz-3oN" secondAttribute="trailing" constant="-70" id="wc6-Ce-OM4"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="7mX-xN-Qgl">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="organize" id="ocO-uE-IsF">
+                        <barButtonItem key="leftBarButtonItem" image="menuIcon" style="done" id="ocO-uE-IsF">
                             <connections>
                                 <action selector="sideMenuToggle:" destination="BYZ-38-t0r" id="3VU-gN-llN"/>
                             </connections>
@@ -107,6 +124,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cancelRouteButtonConstrains" destination="yuP-YY-6xa" id="E9u-7o-BE6"/>
                         <outlet property="directionButtonConstrain" destination="wc6-Ce-OM4" id="oCm-BE-Hag"/>
                         <outlet property="myMap" destination="oD4-Fe-Y3K" id="Jz8-8z-NqT"/>
                         <outlet property="sideMenuConstrain" destination="4qx-ci-h68" id="IZh-Tm-uM3"/>
@@ -403,6 +421,8 @@
         <image name="183205-128.png" width="128" height="128"/>
         <image name="32_BigTree.png" width="578" height="648"/>
         <image name="Fixed Deco Header.png" width="1117" height="220"/>
+        <image name="menuIcon" width="32" height="27"/>
+        <image name="routeIcon" width="48" height="48"/>
         <image name="splash3.png" width="640" height="960"/>
         <image name="startTourButton.png" width="128" height="128"/>
     </resources>

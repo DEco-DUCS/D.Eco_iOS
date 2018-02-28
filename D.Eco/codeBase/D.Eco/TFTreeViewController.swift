@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 
-class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
+class TFTreeViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     /*
      
      This viewcontroller handles the Take a "Tour view". in which it's going to show the user a map with multiple annotations "Pins" as well as the user current locations.
@@ -90,10 +90,7 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-// mapview delegate funtion to handle user tacking..
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        manager.stopUpdatingLocation()
-    }
+
     
     
     // functions that returns the colsest annotation to user locations
@@ -159,12 +156,13 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
         
         
         
-        myMap.delegate = self as! MKMapViewDelegate
+        myMap.delegate = self
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         myMap.addAnnotations(locationArrayForTour)
         manager.startUpdatingLocation()
         myMap.setUserTrackingMode(.followWithHeading, animated:false)
+        myMap.mapType = .hybridFlyover
         
         
     }
@@ -177,7 +175,6 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
             let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
             let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
             myMap.setRegion(region, animated: false)
-            myMap.mapType = MKMapType.hybridFlyover
             
             
         }
@@ -185,117 +182,9 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
         
         
         
-        
-        
     }
+    
+    
+    
 }
-    
-extension ViewController: MKMapViewDelegate{
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            if let annotation = annotation as? annotation{
-                let identifier = "marker"
-                var view: MKAnnotationView
-                if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier){
-                    dequeuedView.annotation = annotation
-                    view = dequeuedView
-                }else{
-                    
-                    if #available(iOS 11.0, *) {
-                        let markerView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                        // another view to hold the addtional data for the call out, such as a label for the subtitle and the description.
-                        let calloutCustomView = UIView()
-                        let myCustomButton = UIButton(type: .detailDisclosure)
-                        myCustomButton.isUserInteractionEnabled = true
-                        myCustomButton.frame = CGRect(x: 95, y: 0, width: 20, height: 20)
-                        myCustomButton.accessibilityIdentifier = "viewCalloutButton"
-                        
-                        
-                        
-                        let calloutWidth = NSLayoutConstraint(item: calloutCustomView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant:120)
-                        
-                        calloutCustomView.addConstraint(calloutWidth)
-                        let calloutHeight = NSLayoutConstraint(item: calloutCustomView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 90)
-                        calloutCustomView.addConstraint(calloutHeight)
-                        
-                        
-                        //markerView.glyphText = "⽊"
-                        
-                        
-                        markerView.calloutOffset = CGPoint(x:0,y:0)
-                        //markerView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                        //markerView.rightCalloutAccessoryView?.frame = CGRect(x:-20, y:-200, width: 30, height: 20)
-                        // markerView.rightCalloutAccessoryView?.reloadInputViews()
-                        // call the cluster that show the number of inner annotations
-                        markerView.clusteringIdentifier = "identifier"
-                        // creating the image and swaping the annotations image with it.
-                        let annotationImage = annotation.image
-                        // creating the image view as a clickable button
-                        let imageButton = UIButton(type: .custom)
-                        // assigning the frame attributes to locate and resize the defualt right callout
-                        imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
-                        imageButton.setImage(annotationImage, for: UIControlState())
-                        // swaping the image view with the lef tcallout view
-                        markerView.leftCalloutAccessoryView = imageButton
-                        // assigning a background button with it
-                        markerView.leftCalloutAccessoryView?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-                        // label to hold the subtitile in the new view
-                        let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -10, width: 80, height: 30))
-                        subtitleLabel.text = annotation.subtitle
-                        //  subtitleLabel.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-                        
-                        subtitleLabel.adjustsFontSizeToFitWidth = true
-                        // another Label to hold the tree description
-                        let annotationDescriptionLabel = UILabel(frame: CGRect(x: 0, y: 20, width: 120, height: 70))
-                        annotationDescriptionLabel.numberOfLines = 10
-                        //calloutCustomView.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-                        
-                        annotationDescriptionLabel.text = "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. "
-                        annotationDescriptionLabel.adjustsFontSizeToFitWidth = true                    //annotationDescriptionLabel.backgroundColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
-                        //myCustomButton.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
-                        
-                        calloutCustomView.addSubview(annotationDescriptionLabel)
-                        calloutCustomView.addSubview(subtitleLabel)
-                        //calloutCustomView.addSubview(myCustomButton)
-                        
-                        
-                        
-                        markerView.detailCalloutAccessoryView = calloutCustomView
-                        
-                        markerView.canShowCallout = true
-                        
-                        // markerView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-                        
-                        
-                        
-                        
-                        return markerView
-                    } else {
-                        
-                        // Fallback on earlier versions
-                        
-                        view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                        view.canShowCallout = true
-                        view.calloutOffset = CGPoint(x:-50,y:-50)
-                        view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                        let annotationImage = annotation.image
-                        let imageButton = UIButton(type: .custom)
-                        imageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-                        imageButton.setImage(annotationImage, for: UIControlState())
-                        view.leftCalloutAccessoryView = imageButton
-                        
-                        
-                    }
-                    
-                }
-                
-                return view
-                
-            }
-            return nil
-        }
-    }
-    
-    
-    
-
 
