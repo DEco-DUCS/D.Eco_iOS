@@ -347,10 +347,10 @@ extension ViewController: CLLocationManagerDelegate{
         
         let geodesic = MKGeodesicPolyline(coordinates: &convertedRouteArray, count: convertedRouteArray.count)
         
-        self.myMap.removeOverlays(self.myMap.overlays)
+        
+        myMap.removeOverlays(self.myMap.overlays)
         self.polylineContainer = geodesic
         self.myMap.add(self.polylineContainer!)
-        
         
         
     }
