@@ -350,6 +350,7 @@ extension ViewController: CLLocationManagerDelegate{
         self.myMap.removeOverlays(self.myMap.overlays)
         self.polylineContainer = geodesic
         self.myMap.add(self.polylineContainer!)
+        // finish what you started here ->  myMap.overlays.
         
         
         
