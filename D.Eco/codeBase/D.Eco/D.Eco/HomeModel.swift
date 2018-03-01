@@ -77,30 +77,50 @@ class HomeModel:NSObject {
             let jsonArray = try JSONSerialization.jsonObject(with: data, options: []) as! [Any]
             
             for jsonObject in jsonArray{
-                // creating a dictinary to hold a the value of the JSON object.
+                // creating a dictinary to hold  the of each value of the JSON object.
                 let currentAnnotaionArray: Dictionary = jsonObject as! Dictionary <String,AnyObject>
                 // creating the key names to get the dictianry value of the needed value.
                 let TITLE_KEY = "common_name"
                 let SUBTITLE_KEY = "scientific_name"
                 let LATITUDE_KEY = "latitude"
                 let LONGITUDE_KEY = "longitude"
+                let DESCRIPTION_KEY = "description"
                 // parse and get the  name and discription.
+                
+                
                 let titleString:String = currentAnnotaionArray[TITLE_KEY] as! String
                 let subtitleString:String  = currentAnnotaionArray[SUBTITLE_KEY] as! String
                 
                 // getting the latitude and longitude and force cast it to double type, using doubleValue method.
                 let latitudeString:Double = (currentAnnotaionArray[LATITUDE_KEY]?.doubleValue)!
                 let longitudeString: Double = (currentAnnotaionArray[LONGITUDE_KEY]?.doubleValue)!
+               
                 
                 // creating the location from the LATITUDE_KEY and LONGITUDE_KEY, from type CCLOcation2D, which is A structure that contains a geographical coordinate using the WGS 84 reference frame.
                 
                 let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitudeString, longitudeString)
                 // cuurent annotation is an object from the calss annotaion to create the annotaion from the given JSON obejct.
+               // guard let description = currentAnnotaionArray[DESCRIPTION_KEY] as? String else{
+                let description = currentAnnotaionArray[DESCRIPTION_KEY] as? String
+                if description != nil{
+                    let currentAnnotaion: annotation = annotation(title: titleString, subtitle: subtitleString, coordinates: location, description: description!)
+                       locationArray.append(currentAnnotaion)
+                }
+                else{
+                    
+                    let currentAnnotaion: annotation = annotation(title: titleString, subtitle: subtitleString, coordinate: location)
+                    locationArray.append(currentAnnotaion)
+                }
                 
-              let currentAnnotaion: annotation = annotation(title: titleString, subtitle: subtitleString ,coordinate: location)
+                
+                
+                
+                
+                
+                //annotation(title: titleString, subtitle: subtitleString ,coordinate: location)
             
                 
-                locationArray.append(currentAnnotaion)
+                
                 
                 
             }// Json for loop end
@@ -138,7 +158,7 @@ class HomeModel:NSObject {
                 let LATITUDE_KEY = "latitude"
                 let LONGITUDE_KEY = "longitude"
                 let DESCRIPTION_KEY = "description"
-                let FILE_PATH = "filepath"
+                //let FILE_PATH = "filepath"
                 // parse and get the  name and discription.
                 let titleString:String = currentAnnotaionArray[TITLE_KEY] as! String
                 let subtitleString:String  = currentAnnotaionArray[SUBTITLE_KEY] as! String

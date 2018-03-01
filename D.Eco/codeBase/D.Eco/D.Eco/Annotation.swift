@@ -21,13 +21,13 @@ class annotation: NSObject, MKAnnotation{
         self.subtitle = subtitle
         self.coordinate = coordinate
     }
-    init(title:String, subtitle:String, coordinates:CLLocationCoordinate2D,annotationImage:String,description:String){
+    init(title:String, subtitle:String, coordinates:CLLocationCoordinate2D,description:String){
         
         self.title = title
         self.subtitle = subtitle
         self.coordinate = coordinates
         self.annotationDescription = description
-        self.image = UIImage(named: annotationImage)!
+        
     }
 
 

@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var polylineContainer: MKPolyline?
     var treeNameToDetails:String?
     var treeSubtitleToDetails:String?
+    var treeDescriptionToDetails:String?
     
     // this is a var of type CLplacemark that going to hold the tapped annotation from the user
     var currentPlacemark: CLLocation?
@@ -158,7 +159,7 @@ class ViewController: UIViewController {
             let nextViewController: TreeDetailsView = segue.destination as! TreeDetailsView
             nextViewController.treePassedName = self.treeNameToDetails
             nextViewController.treePassedSubtitle = self.treeSubtitleToDetails
-            nextViewController.pressedAnnotation = annotation(title: self.treeNameToDetails!, subtitle: self.treeSubtitleToDetails!, coordinate: (self.currentPlacemark?.coordinate)!)
+            nextViewController.treePassedDescription = self.treeDescriptionToDetails
             
             
         }
@@ -253,7 +254,7 @@ extension ViewController: MKMapViewDelegate{
                     annotationDescriptionLabel.numberOfLines = 5
                     //calloutCustomView.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
                     
-                    annotationDescriptionLabel.text = "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. "
+                    annotationDescriptionLabel.text = annotation.annotationDescription
                    // annotationDescriptionLabel.adjustsFontSizeToFitWidth = true                    //annotationDescriptionLabel.backgroundColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
                     myCustomButton.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
                     annotationDescriptionLabel.adjustsFontSizeToFitWidth = false
@@ -308,6 +309,17 @@ extension ViewController: MKMapViewDelegate{
             self.directionButtonConstrain.constant = -8
             self.treeNameToDetails = (view.annotation?.title)!
             self.treeSubtitleToDetails = (view.annotation?.subtitle)!
+            let description = view.detailCalloutAccessoryView?.subviews[0]
+            if description is UILabel{
+                let desLabel = description as! UILabel
+                let descriptionText = desLabel.text
+                if descriptionText != nil{
+                    self.treeDescriptionToDetails = descriptionText
+                    
+                    
+                }
+                
+            }
             
         }
      
@@ -315,6 +327,9 @@ extension ViewController: MKMapViewDelegate{
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         self.directionButtonConstrain.constant = -70
+        self.treeDescriptionToDetails = ""
+        self.treeNameToDetails = ""
+        self.treeSubtitleToDetails = ""
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {

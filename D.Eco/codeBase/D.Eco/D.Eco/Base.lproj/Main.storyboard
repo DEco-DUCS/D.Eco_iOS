@@ -283,7 +283,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="9DH-a8-feh"/>
                                 </constraints>
-                                <string key="text">Tree Descriptions :   need to add description data in Json for trees ...................................................................................................................................................................................................................................................................................................................................................................................................................</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -308,6 +307,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="treeDescription" destination="ng7-C6-Hl9" id="wM2-KS-Mq4"/>
                         <outlet property="treeImage" destination="R22-bg-58z" id="XdP-HQ-MZF"/>
                         <outlet property="treeName" destination="47w-1f-IQZ" id="MVB-Dw-G07"/>
                         <outlet property="treeSubtitle" destination="SVE-je-dzr" id="0CD-LC-KTl"/>

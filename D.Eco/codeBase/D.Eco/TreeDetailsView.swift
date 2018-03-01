@@ -18,15 +18,18 @@ class TreeDetailsView: UIViewController {
     @IBOutlet weak var treeName: UILabel!
     // putlet to handle the subtitle/ scientific name
     @IBOutlet weak var treeSubtitle: UILabel!
+    @IBOutlet weak var treeDescription: UITextView!
     var treePassedName: String?
     var treePassedSubtitle: String?
+    var treePassedDescription: String?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        treeName.text = pressedAnnotation?.title
-        treeSubtitle.text = pressedAnnotation?.subtitle
+        treeName.text = treePassedName
+        treeSubtitle.text = treePassedSubtitle
+        treeDescription.text = treePassedDescription
         // Do any additional setup after loading the view.
     }
 
