@@ -355,11 +355,12 @@
                     </view>
                     <connections>
                         <outlet property="myMap" destination="v0j-CG-BxH" id="rYL-K8-eY3"/>
+                        <segue destination="CIT-QP-kYL" kind="show" identifier="goToDetailsPage" id="U0W-PE-iNP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTs-jL-ULh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1430" y="752"/>
+            <point key="canvasLocation" x="1430" y="776"/>
         </scene>
         <!--Splash Screen View Controller-->
         <scene sceneID="fmH-NF-UVK">
@@ -427,5 +428,8 @@
         <image name="splash3.png" width="640" height="960"/>
         <image name="startTourButton.png" width="128" height="128"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="mTW-m4-n2e"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52687108520000003" green="0.1270085722" blue="0.078507170079999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

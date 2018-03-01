@@ -153,6 +153,7 @@ class ViewController: UIViewController {
             let mainViewController: TFTreeViewController = segue.destination as! TFTreeViewController
             
             mainViewController.locationArrayForTour = locationArrayForTour
+            print(" this is the tree data passed to the 21 tour page ------> \(locationArrayForTour)")
             
         }
         if(segue.identifier == "goToDetailsPage"){
