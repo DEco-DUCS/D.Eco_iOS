@@ -24,13 +24,22 @@ class TreeDetailsView: UIViewController {
     var treePassedDescription: String?
     var treeImageHolderToDetails:String?
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        // code to handel the header image.
+        
+        //let titleView = UIImageView(image: UIImage(named: "Fixed Deco Header.png"))
+        //self.navigationItem.titleView = titleView
+        self.navigationItem.title = "Info"
+        
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         treeName.text = "Common Name: \(treePassedName!)"
         treeSubtitle.text = "Scientific Name: \(treePassedSubtitle!)"
-        treeDescription.text =  "Description:\n \t\(treePassedDescription!)"
+        treeDescription.text =  "Description:\n \(treePassedDescription!)"
         if treeImageHolderToDetails != nil{
             treeImage.image = UIImage(named:treeImageHolderToDetails!)
             

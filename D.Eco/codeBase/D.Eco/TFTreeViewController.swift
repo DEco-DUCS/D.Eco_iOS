@@ -38,7 +38,7 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
         
         createPolyline(mapView: self.myMap, PAnnotations: locationArrayForTour)
         self.myMap.showAnnotations(locationArrayForTour, animated: true)
-        print(locationArrayForTour,"here is the new json obejt pass throught the viewcontroller ssegue.......")
+        
         
     }
     // this is a test function to check if the annotations are sorted
@@ -171,7 +171,16 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        // code to handel the header image.
+        
+        //let titleView = UIImageView(image: UIImage(named: "Fixed Deco Header.png"))
+        //self.navigationItem.titleView = titleView
+        self.navigationItem.title = "21 Tour Tree"
+        
+        
+        
+    }
     
     
     override func viewDidLoad() {
@@ -185,7 +194,7 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
         myMap.addAnnotations(locationArrayForTour)
         manager.startUpdatingLocation()
         myMap.setUserTrackingMode(.followWithHeading, animated:false)
-        myMap.mapType = .hybridFlyover
+        myMap.mapType = .hybrid
         
         
     }

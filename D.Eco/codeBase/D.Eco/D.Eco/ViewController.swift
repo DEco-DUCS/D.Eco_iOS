@@ -83,6 +83,8 @@ class ViewController: UIViewController {
         
         //let titleView = UIImageView(image: UIImage(named: "Fixed Deco Header.png"))
         //self.navigationItem.titleView = titleView
+        self.navigationItem.title = "D.Eco"
+    
     
         
     }
@@ -119,7 +121,7 @@ class ViewController: UIViewController {
         let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake((manager.location?.coordinate.latitude)!, (manager.location?.coordinate.longitude)!)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         myMap.setRegion(region, animated: true)
-        
+        myMap.mapType = .hybrid
         
         
         
@@ -145,7 +147,7 @@ class ViewController: UIViewController {
         self.myMap.addAnnotations(locationArray)
         
         myMap.setUserTrackingMode(.follow, animated:true)
-        myMap.mapType = MKMapType.hybridFlyover
+        
         
         mapSetUp()
         
@@ -156,7 +158,8 @@ class ViewController: UIViewController {
             let mainViewController: TFTreeViewController = segue.destination as! TFTreeViewController
             
             mainViewController.locationArrayForTour = locationArrayForTour
-            print(" this is the tree data passed to the 21 tour page ------> \(locationArrayForTour)")
+           
+            
             
         }
         if(segue.identifier == "goToDetailsPage"){
@@ -353,7 +356,7 @@ extension ViewController: MKMapViewDelegate{
         self.treeDescriptionToDetails = ""
         self.treeNameToDetails = ""
         self.treeSubtitleToDetails = ""
-        self.treeImageHolderToDetails = nil
+        self.treeImageHolderToDetails = ""
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {

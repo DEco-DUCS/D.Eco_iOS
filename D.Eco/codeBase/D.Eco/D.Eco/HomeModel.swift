@@ -111,7 +111,8 @@ class HomeModel:NSObject {
                         
                         //annotation(title: titleString, subtitle: subtitleString, coordinates: location, description: description!)
                         locationArray.append(currentAnnotaion)
-                        print("---------------------->>>>>>>>>>>>>>>>>>>>>>>",titleString)
+                        
+                        
                         
                         
                     } else{

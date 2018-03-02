@@ -63,7 +63,7 @@ class splashScreenViewController: UIViewController, HomeModelDelegate {
         mainViewController.locationArray = locationArray
         mainViewController.locationArrayForTour = locationArrayForTour
             
-            print("here is the data for the 21 trees in the splash screen after\(locationArrayForTour)")
+            
             
         }
     }
