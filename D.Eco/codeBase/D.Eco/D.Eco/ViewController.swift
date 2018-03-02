@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var treeNameToDetails:String?
     var treeSubtitleToDetails:String?
     var treeDescriptionToDetails:String?
+    var treeImageHolderToDetails:String?
     
     // this is a var of type CLplacemark that going to hold the tapped annotation from the user
     var currentPlacemark: CLLocation?
@@ -28,6 +29,8 @@ class ViewController: UIViewController {
         self.performSegue(withIdentifier: "goToDetailsPage", sender: self)
         
     }
+    
+    //let imageMatchArray:[String] = ["American Dogwood","American Sycamore","Bald Cypress","Basswood","Black Maple","Callery Pear","Catalpa","Chinquapin Oak","Northern Red Oak","Pin Oak","Post Oak","Redbud","Siberian Elm","Silver Maple","Southern Magnolia","Sugar Maple","Sweet Gum","White Pine","Willow Oak"]
     // direction button
     // apears when user touch an annotation
     // once it's tapped it will create a route from the user current locaton to the tapped annotation
@@ -161,7 +164,9 @@ class ViewController: UIViewController {
             nextViewController.treePassedName = self.treeNameToDetails
             nextViewController.treePassedSubtitle = self.treeSubtitleToDetails
             nextViewController.treePassedDescription = self.treeDescriptionToDetails
-            
+            if treeImageHolderToDetails != nil{
+                nextViewController.treeImageHolderToDetails = self.treeImageHolderToDetails
+            }
             
         }
         
@@ -234,7 +239,20 @@ extension ViewController: MKMapViewDelegate{
                     
                     markerView.clusteringIdentifier = "identifier"
                    // creating the image and swaping the annotations image with it.
-                    let annotationImage = annotation.image
+                   
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    let annotationImage = UIImage(named:annotation.image)
                     // creating the image view as a clickable button
                     let imageButton = UIButton(type: .custom)
                     // assigning the frame attributes to locate and resize the defualt right callout
@@ -276,26 +294,28 @@ extension ViewController: MKMapViewDelegate{
                     
                     
                     return markerView
+                    
+                    
                 } else {
                     
                     // Fallback on earlier versions
                     
-                    view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                    view.canShowCallout = true
-                    view.calloutOffset = CGPoint(x:-50,y:-50)
-                    view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                    let annotationImage = annotation.image
-                    let imageButton = UIButton(type: .custom)
-                    imageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-                    imageButton.setImage(annotationImage, for: UIControlState())
-                    view.leftCalloutAccessoryView = imageButton
+//                    view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//                    view.canShowCallout = true
+//                    view.calloutOffset = CGPoint(x:-50,y:-50)
+//                    view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+//                    let annotationImage = annotation.image
+//                    let imageButton = UIButton(type: .custom)
+//                    imageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+//                    imageButton.setImage(annotationImage, for: UIControlState())
+//                    view.leftCalloutAccessoryView = imageButton
                     
                     
                 }
            
             }
             
-            return view
+
             
         }
         return nil
@@ -308,9 +328,11 @@ extension ViewController: MKMapViewDelegate{
             
             self.currentPlacemark = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             self.directionButtonConstrain.constant = -8
-            self.treeNameToDetails = (view.annotation?.title)!
-            self.treeSubtitleToDetails = (view.annotation?.subtitle)!
+            self.treeNameToDetails = (location.title)!
+            self.treeSubtitleToDetails = (location.subtitle)!
             let description = view.detailCalloutAccessoryView?.subviews[0]
+            self.treeImageHolderToDetails = location.image
+            
             if description is UILabel{
                 let desLabel = description as! UILabel
                 let descriptionText = desLabel.text
@@ -331,6 +353,7 @@ extension ViewController: MKMapViewDelegate{
         self.treeDescriptionToDetails = ""
         self.treeNameToDetails = ""
         self.treeSubtitleToDetails = ""
+        self.treeImageHolderToDetails = nil
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {

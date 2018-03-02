@@ -14,6 +14,7 @@ protocol HomeModelDelegate {
     func itemsDownloadForTour(tourLocation: [annotation])
 }
 class HomeModel:NSObject {
+     let imageMatchArray:[String] = ["American Dogwood","American Sycamore","Bald Cypress","Basswood","Black Maple","Callery Pear","Catalpa","Chinquapin Oak","Northern Red Oak","Pin Oak","Post Oak","Redbud","Siberian Elm","Silver Maple","Southern Magnolia","Sugar Maple","Sweet Gum","White Pine","Willow Oak","White Ash","Ginkgo"]
     
     var delegate: HomeModelDelegate?
     var secondDelegate: HomeModelDelegate?
@@ -103,8 +104,22 @@ class HomeModel:NSObject {
                // guard let description = currentAnnotaionArray[DESCRIPTION_KEY] as? String else{
                 let description = currentAnnotaionArray[DESCRIPTION_KEY] as? String
                 if description != nil{
-                    let currentAnnotaion: annotation = annotation(title: titleString, subtitle: subtitleString, coordinates: location, description: description!)
-                       locationArray.append(currentAnnotaion)
+                    
+                    
+                    if imageMatchArray.contains(titleString){
+                    let currentAnnotaion: annotation = annotation(title: titleString, subtitle: subtitleString, coordinates: location, description: description!, annoImage: titleString)
+                        
+                        //annotation(title: titleString, subtitle: subtitleString, coordinates: location, description: description!)
+                        locationArray.append(currentAnnotaion)
+                        print("---------------------->>>>>>>>>>>>>>>>>>>>>>>",titleString)
+                        
+                        
+                    } else{
+                        let currentAnnotaion: annotation = annotation(title: titleString, subtitle: subtitleString, coordinates: location, description: description!)
+                           locationArray.append(currentAnnotaion)
+                        
+                    }
+                    
                 }
                 else{
                     
@@ -176,15 +191,17 @@ class HomeModel:NSObject {
                 // guard let description = currentAnnotaionArray[DESCRIPTION_KEY] as? String else{
                 let description = currentAnnotaionArray[DESCRIPTION_KEY] as? String
                 if description != nil{
+                    
+                    
                     let currentAnnotaion: annotation = annotation(title: titleString, subtitle: subtitleString, coordinates: location, description: description!)
                     locationArrayForTour.append(currentAnnotaion)
-                    print("has des \(titleString)")
+                    
                 }
                 else{
                     
                     let currentAnnotaion: annotation = annotation(title: titleString, subtitle: subtitleString, coordinate: location)
                     locationArrayForTour.append(currentAnnotaion)
-                     print("doesn't have des \(titleString)")
+                    
                 }
                 
                 

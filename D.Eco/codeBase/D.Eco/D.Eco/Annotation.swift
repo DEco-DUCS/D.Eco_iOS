@@ -13,7 +13,7 @@ class annotation: NSObject, MKAnnotation{
     var title: String?
     var subtitle: String?
     var coordinate: CLLocationCoordinate2D
-    var image: UIImage = UIImage(named:"32_BigTree")!
+    var image: String = "32_BigTree"
     var annotationDescription:String?
     
     init(title:String, subtitle: String, coordinate: CLLocationCoordinate2D) {
@@ -28,6 +28,13 @@ class annotation: NSObject, MKAnnotation{
         self.coordinate = coordinates
         self.annotationDescription = description
         
+    }
+    init(title:String, subtitle:String, coordinates:CLLocationCoordinate2D,description:String, annoImage: String) {
+        self.title = title
+        self.subtitle = subtitle
+        self.coordinate = coordinates
+        self.annotationDescription = description
+        self.image = annoImage
     }
 
 

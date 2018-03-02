@@ -22,15 +22,19 @@ class TreeDetailsView: UIViewController {
     var treePassedName: String?
     var treePassedSubtitle: String?
     var treePassedDescription: String?
+    var treeImageHolderToDetails:String?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        treeName.text = treePassedName
-        treeSubtitle.text = treePassedSubtitle
-        treeDescription.text = treePassedDescription
-        // Do any additional setup after loading the view.
+        treeName.text = "Common Name: \(treePassedName!)"
+        treeSubtitle.text = "Scientific Name: \(treePassedSubtitle!)"
+        treeDescription.text =  "Description:\n \t\(treePassedDescription!)"
+        if treeImageHolderToDetails != nil{
+            treeImage.image = UIImage(named:treeImageHolderToDetails!)
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

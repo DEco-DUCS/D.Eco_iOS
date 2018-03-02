@@ -26,8 +26,9 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
     var treeNameToDetails:String?
     var treeSubtitleToDetails:String?
     var treeDescriptionToDetails:String?
+    var treeImageHolderToDetails: String?
     
-    
+     let imageMatchArray:[String] = ["American Dogwood","American Sycamore","Bald Cypress","Basswood","Black Maple","Callery Pear","Catalpa","Chinquapin Oak","Northern Red Oak","Pin Oak","Post Oak","Redbud","Siberian Elm","Silver Maple","Southern Magnolia","Sugar Maple","Sweet Gum","White Pine","Willow Oak","White Ash","Ginkgo"]
     @objc public func goToDetails(_sender: UIButton){
         
         self.performSegue(withIdentifier: "goToDetailsPage", sender: self)
@@ -164,7 +165,7 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
             nextViewController.treePassedName = self.treeNameToDetails
             nextViewController.treePassedSubtitle = self.treeSubtitleToDetails
             nextViewController.treePassedDescription = self.treeDescriptionToDetails
-            
+            nextViewController.treeImageHolderToDetails = self.treeImageHolderToDetails
             
         }
         
@@ -247,9 +248,62 @@ extension TFTreeViewController: MKMapViewDelegate{
                     
                     markerView.calloutOffset = CGPoint(x:0,y:0)
                     
-                    //markerView.clusteringIdentifier = "identifier"
+                    markerView.clusteringIdentifier = "identifier"
                     // creating the image and swaping the annotations image with it.
-                    let annotationImage = annotation.image
+                    
+                    if imageMatchArray.contains(annotation.title!){
+                        let annotationImage: UIImage = UIImage(named: annotation.title!)!
+                        
+                        //print("----------------------------------------------\(annotationImage.accessibilityPath)")
+                        // creating the image view as a clickable button
+                        let imageButton = UIButton(type: .custom)
+                        // assigning the frame attributes to locate and resize the defualt right callout
+                        imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
+                        imageButton.setImage(annotationImage, for: UIControlState())
+                        // swaping the image view with the lef tcallout view
+                        markerView.leftCalloutAccessoryView = imageButton
+                        // assigning a background button with it
+                        markerView.leftCalloutAccessoryView?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                        // label to hold the subtitile in the new view
+                        let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -10, width: 80, height: 30))
+                        subtitleLabel.text = annotation.subtitle
+                        //  subtitleLabel.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                        
+                        subtitleLabel.adjustsFontSizeToFitWidth = true
+                        // another Label to hold the tree description
+                        let annotationDescriptionLabel = UILabel(frame: CGRect(x: 0, y: 20, width: 120, height: 70))
+                        annotationDescriptionLabel.numberOfLines = 5
+                        //calloutCustomView.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+                        
+                        annotationDescriptionLabel.text = annotation.annotationDescription
+                        // annotationDescriptionLabel.adjustsFontSizeToFitWidth = true                    //annotationDescriptionLabel.backgroundColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
+                        myCustomButton.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
+                        annotationDescriptionLabel.adjustsFontSizeToFitWidth = false
+                        annotationDescriptionLabel.font = UIFont.systemFont(ofSize: 9.0)
+                        //annotationDescriptionLabel.font = UIFont(name: "identifier", size: 1)
+                        calloutCustomView.addSubview(annotationDescriptionLabel)
+                        calloutCustomView.addSubview(subtitleLabel)
+                        calloutCustomView.addSubview(myCustomButton)
+                        
+                        
+                        
+                        
+                        markerView.detailCalloutAccessoryView = calloutCustomView
+                        markerView.canShowCallout = true
+                        
+                        
+                        
+                        
+                        
+                        return markerView
+                        
+                        
+                    }
+                    else{
+                    
+                    
+                    
+                        let annotationImage = UIImage(named: annotation.image)
                     // creating the image view as a clickable button
                     let imageButton = UIButton(type: .custom)
                     // assigning the frame attributes to locate and resize the defualt right callout
@@ -282,7 +336,7 @@ extension TFTreeViewController: MKMapViewDelegate{
                     
                     
                     
-                    
+    
                     markerView.detailCalloutAccessoryView = calloutCustomView
                     markerView.canShowCallout = true
                     
@@ -291,26 +345,28 @@ extension TFTreeViewController: MKMapViewDelegate{
                     
                     
                     return markerView
+                    }
+                    
                 } else {
                     
                     // Fallback on earlier versions
                     
-                    view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                    view.canShowCallout = true
-                    view.calloutOffset = CGPoint(x:-50,y:-50)
-                    view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-                    let annotationImage = annotation.image
-                    let imageButton = UIButton(type: .custom)
-                    imageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-                    imageButton.setImage(annotationImage, for: UIControlState())
-                    view.leftCalloutAccessoryView = imageButton
+//                    view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//                    view.canShowCallout = true
+//                    view.calloutOffset = CGPoint(x:-50,y:-50)
+//                    view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+//                    let annotationImage = annotation.image
+//                    let imageButton = UIButton(type: .custom)
+//                    imageButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+//                    imageButton.setImage(annotationImage, for: UIControlState())
+//                    view.leftCalloutAccessoryView = imageButton
                     
                     
                 }
                 
             }
             
-            return view
+//            return view
             
         }
         return nil
@@ -322,9 +378,12 @@ extension TFTreeViewController: MKMapViewDelegate{
             
             
            
-            self.treeNameToDetails = (view.annotation?.title)!
-            self.treeSubtitleToDetails = (view.annotation?.subtitle)!
+            self.treeNameToDetails = (location.title)!
+            self.treeSubtitleToDetails = (location.subtitle)!
+            self.treeImageHolderToDetails = (location.title)!
             let description = view.detailCalloutAccessoryView?.subviews[0]
+            
+            
             if description is UILabel{
                 let desLabel = description as! UILabel
                 let descriptionText = desLabel.text
@@ -345,6 +404,7 @@ extension TFTreeViewController: MKMapViewDelegate{
         self.treeDescriptionToDetails = ""
         self.treeNameToDetails = ""
         self.treeSubtitleToDetails = ""
+        self.treeImageHolderToDetails = ""
     }
     
     
