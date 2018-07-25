@@ -41,7 +41,7 @@ class splashScreenViewController: UIViewController, HomeModelDelegate {
         homeModelTwo.secondDelegate = self
      Timer.scheduledTimer(timeInterval: 0.05 , target: self, selector: #selector(self.goBar), userInfo: nil, repeats: true)
        
-        Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(autoSegue), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(autoSegue), userInfo: nil, repeats: false)
         
         
     }

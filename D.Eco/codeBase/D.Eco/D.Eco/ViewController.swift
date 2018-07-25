@@ -10,14 +10,13 @@ import UIKit
 import MapKit
 import CoreLocation
 
-
-
 class ViewController: UIViewController {
     var polylineContainer: MKPolyline?
     var treeNameToDetails:String?
     var treeSubtitleToDetails:String?
     var treeDescriptionToDetails:String?
     var treeImageHolderToDetails:String?
+    var calloutImage: UIImageView?
     
     // this is a var of type CLplacemark that going to hold the tapped annotation from the user
     var currentPlacemark: CLLocation?
@@ -80,7 +79,7 @@ class ViewController: UIViewController {
     // blow code to handle the head image and load it before this view appears.
     override func viewWillAppear(_ animated: Bool) {
         // code to handel the header image.
-        
+        manager.requestWhenInUseAuthorization()
         //let titleView = UIImageView(image: UIImage(named: "Fixed Deco Header.png"))
         //self.navigationItem.titleView = titleView
         self.navigationItem.title = "D.Eco"
@@ -132,16 +131,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        manager.requestWhenInUseAuthorization()
         
         // Do any additional setup after loading the view, typically from a nib.
         sideMenuConstrain.constant = -150
         cancelRouteButtonConstrains.constant = 0
+       
+        
+        
         manager.delegate = self
         myMap.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         
-        manager.requestWhenInUseAuthorization()
+        
         // edit start:
         self.myMap.showsUserLocation = true
         self.myMap.addAnnotations(locationArray)
@@ -241,7 +243,6 @@ extension ViewController: MKMapViewDelegate{
                     let calloutHeight = NSLayoutConstraint(item: calloutCustomView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 90)
                     calloutCustomView.addConstraint(calloutHeight)
                     
-                    
                     //markerView.glyphText = "⽊"
                     
                     
@@ -262,16 +263,16 @@ extension ViewController: MKMapViewDelegate{
                     
                     
                     
-                    let annotationImage = UIImage(named:annotation.image)
-                    // creating the image view as a clickable button
-                    let imageButton = UIButton(type: .custom)
-                    // assigning the frame attributes to locate and resize the defualt right callout
-                    imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
-                    imageButton.setImage(annotationImage, for: UIControlState())
-                    // swaping the image view with the lef tcallout view
-                    markerView.leftCalloutAccessoryView = imageButton
-                    // assigning a background button with it
-                    markerView.leftCalloutAccessoryView?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//                    let annotationImage = UIImage(named:annotation.image)
+//                    // creating the image view as a clickable button
+//                    let imageButton = UIButton(type: .custom)
+//                    // assigning the frame attributes to locate and resize the defualt right callout
+//                    imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
+//                    imageButton.setImage(annotationImage, for: UIControlState())
+//                    // swaping the image view with the lef tcallout view
+//                    markerView.leftCalloutAccessoryView = imageButton
+////                    // assigning a background button with it
+//                    markerView.leftCalloutAccessoryView?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                     // label to hold the subtitile in the new view
                     let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -10, width: 80, height: 30))
                     subtitleLabel.text = annotation.subtitle
@@ -347,16 +348,16 @@ extension ViewController: MKMapViewDelegate{
                     
                     
                     
-                    let annotationImage = UIImage(named:annotation.image)
-                    // creating the image view as a clickable button
-                    let imageButton = UIButton(type: .custom)
-                    // assigning the frame attributes to locate and resize the defualt right callout
-                    imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
-                    imageButton.setImage(annotationImage, for: UIControlState())
-                    // swaping the image view with the lef tcallout view
-                    markerView.leftCalloutAccessoryView = imageButton
-                    // assigning a background button with it
-                    markerView.leftCalloutAccessoryView?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//                    let annotationImage = UIImage(named:annotation.image)
+//                    // creating the image view as a clickable button
+//                    let imageButton = UIButton(type: .custom)
+//                    // assigning the frame attributes to locate and resize the defualt right callout
+//                    imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
+//                    imageButton.setImage(annotationImage, for: UIControlState())
+//                    // swaping the image view with the lef tcallout view
+//                   markerView.leftCalloutAccessoryView = imageButton
+////                    // assigning a background button with it
+//                    markerView.leftCalloutAccessoryView?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                     // label to hold the subtitile in the new view
                     let subtitleLabel = UILabel(frame: CGRect(x: 0, y: -10, width: 80, height: 30))
                     subtitleLabel.text = annotation.subtitle
@@ -420,14 +421,47 @@ extension ViewController: MKMapViewDelegate{
         
         
         if let location = view.annotation as? annotation{
-            
             self.currentPlacemark = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             self.directionButtonConstrain.constant = -8
             self.treeNameToDetails = (location.title)!
             self.treeSubtitleToDetails = (location.subtitle)!
             let description = view.detailCalloutAccessoryView?.subviews[0]
             self.treeImageHolderToDetails = location.image
+
             
+            
+            DispatchQueue.global(qos: .userInitiated).async {
+                // Download file or perform expensive task
+                let urlString = "http://mcs.drury.edu/deco/imagesREST/thumpnails/\(location.title!).jpg"
+                let urlEncoded = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                let url = URL(string: urlEncoded!)
+
+                let downloadService = NetworkService(url: url!)
+                downloadService.downloadImage { (data) in
+                    let calloutImage = UIImage(data: data as Data)
+                    DispatchQueue.main.async {
+                        // Update the UI
+                       let imageButton = UIButton()
+                        imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
+                        imageButton.setImage(calloutImage, for: UIControlState())
+                        view.leftCalloutAccessoryView = imageButton
+                        //view.leftCalloutAccessoryView?.reloadInputViews()
+                    }
+                }
+
+            }
+            
+      
+
+            
+            
+            
+           
+        
+            
+            
+            
+           
             if description is UILabel{
                 let desLabel = description as! UILabel
                 let descriptionText = desLabel.text
@@ -513,7 +547,26 @@ extension ViewController: CLLocationManagerDelegate{
 }
 
 
-
+extension UIImageView {
+    func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() {
+                self.image = image
+            }
+            }.resume()
+    }
+    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloadedFrom(url: url, contentMode: mode)
+    }
+}
 
 
 

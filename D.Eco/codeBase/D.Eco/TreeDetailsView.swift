@@ -41,7 +41,17 @@ class TreeDetailsView: UIViewController {
         treeSubtitle.text = "Scientific Name: \(treePassedSubtitle!)"
         treeDescription.text =  "Description:\n \(treePassedDescription!)"
         if treeImageHolderToDetails != nil{
-            treeImage.image = UIImage(named:treeImageHolderToDetails!)
+//            treeImage.image = UIImage(named:treeImageHolderToDetails!)
+            
+            DispatchQueue.main.async {
+               
+                let urlString = "http://mcs.drury.edu/deco/imagesREST/FullImages/\(self.treePassedName!).jpg"
+                let urlEncoded = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                let url = URL(string: urlEncoded!)
+                
+                self.treeImage.downloadedFrom(url: url!)
+                
+            }
             
         }
     }

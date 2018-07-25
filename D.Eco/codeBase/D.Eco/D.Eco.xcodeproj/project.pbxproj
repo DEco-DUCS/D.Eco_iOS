@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4220752A1FC5181E00062E5F /* splashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422075291FC5181E00062E5F /* splashScreenViewController.swift */; };
 		424A8C7A201D616F0066A351 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424A8C79201D616F0066A351 /* TableViewController.swift */; };
+		424E5F7020DB4AE800689780 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424E5F6F20DB4AE800689780 /* NetworkService.swift */; };
+		427EA36A20E16C500005164D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 427EA36920E16C500005164D /* Default-568h@2x.png */; };
 		42C9F9621FD776FB00B50070 /* splashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 42C9F9611FD776FB00B50070 /* splashScreen.png */; };
 		42C9F9661FD7781D00B50070 /* splash3.png in Resources */ = {isa = PBXBuildFile; fileRef = 42C9F9631FD7781C00B50070 /* splash3.png */; };
 		42C9F9671FD7781D00B50070 /* splash2.png in Resources */ = {isa = PBXBuildFile; fileRef = 42C9F9641FD7781D00B50070 /* splash2.png */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		422075291FC5181E00062E5F /* splashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreenViewController.swift; sourceTree = "<group>"; };
 		424A8C79201D616F0066A351 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		424E5F6F20DB4AE800689780 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		427EA36920E16C500005164D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		42C9F9611FD776FB00B50070 /* splashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splashScreen.png; path = "splash screen design/splashScreen.png"; sourceTree = "<group>"; };
 		42C9F9631FD7781C00B50070 /* splash3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash3.png; sourceTree = "<group>"; };
 		42C9F9641FD7781D00B50070 /* splash2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash2.png; sourceTree = "<group>"; };
@@ -45,7 +49,7 @@
 		42D247B1201BA968004F141D /* TreeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TreeDetailsView.swift; path = ../TreeDetailsView.swift; sourceTree = "<group>"; };
 		42D247B3201BB4AD004F141D /* 32_BigTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 32_BigTree.png; sourceTree = "<group>"; };
 		42E77FA520395BB400FC5635 /* DEco Tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DEco Tree.png"; sourceTree = SOURCE_ROOT; };
-		EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TFTreeViewController.swift; path = ../TFTreeViewController.swift; sourceTree = "<group>"; };
+		EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFTreeViewController.swift; sourceTree = "<group>"; };
 		EE75599820391482001AD1D3 /* CustomAnnotationCallout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationCallout.swift; sourceTree = "<group>"; };
 		EE7A27F01F72BB4800B6BED5 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		EE86796D2038DEF10014A6AA /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
@@ -72,13 +76,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		428E31F11FD4C1560009A184 /* classes/Models */ = {
+		424E5F6D20DB44B400689780 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EEA1FDE21F70525A00CB43D8 /* LaunchScreen.storyboard */,
+				EEA1FDE51F70525A00CB43D8 /* Info.plist */,
+				EEA1FDDD1F70525A00CB43D8 /* Main.storyboard */,
+				EE86796D2038DEF10014A6AA /* View.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		424E5F6E20DB44BB00689780 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				42D247B1201BA968004F141D /* TreeDetailsView.swift */,
+				EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */,
+				EEA1FDDB1F70525A00CB43D8 /* ViewController.swift */,
+				424A8C79201D616F0066A351 /* TableViewController.swift */,
+				422075291FC5181E00062E5F /* splashScreenViewController.swift */,
+				EEA1FDD91F70525A00CB43D8 /* AppDelegate.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		428E31F11FD4C1560009A184 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EE75599820391482001AD1D3 /* CustomAnnotationCallout.swift */,
 				EE7A27F01F72BB4800B6BED5 /* Annotation.swift */,
 				EED097111F77281E00C281FA /* HomeModel.swift */,
+				424E5F6F20DB4AE800689780 /* NetworkService.swift */,
 			);
-			name = classes/Models;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		EE64BAC41F7EE33100A007A2 /* Design File */ = {
@@ -108,6 +138,7 @@
 		EEA1FDCD1F70525A00CB43D8 = {
 			isa = PBXGroup;
 			children = (
+				427EA36920E16C500005164D /* Default-568h@2x.png */,
 				EEA1FDD81F70525A00CB43D8 /* D.Eco */,
 				EEA1FDD71F70525A00CB43D8 /* Products */,
 				EEA1FDEB1F7052B400CB43D8 /* Frameworks */,
@@ -125,21 +156,12 @@
 		EEA1FDD81F70525A00CB43D8 /* D.Eco */ = {
 			isa = PBXGroup;
 			children = (
-				42D247B1201BA968004F141D /* TreeDetailsView.swift */,
-				EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */,
-				EEA1FDDB1F70525A00CB43D8 /* ViewController.swift */,
-				EEA1FDDD1F70525A00CB43D8 /* Main.storyboard */,
-				EE86796D2038DEF10014A6AA /* View.xib */,
-				EE75599820391482001AD1D3 /* CustomAnnotationCallout.swift */,
-				424A8C79201D616F0066A351 /* TableViewController.swift */,
-				422075291FC5181E00062E5F /* splashScreenViewController.swift */,
-				428E31F11FD4C1560009A184 /* classes/Models */,
-				EEA1FDD91F70525A00CB43D8 /* AppDelegate.swift */,
+				424E5F6D20DB44B400689780 /* View */,
+				424E5F6E20DB44BB00689780 /* Controller */,
+				428E31F11FD4C1560009A184 /* Models */,
 				EEBA5EFF1F74A7CD008EBA8D /* API */,
 				EEA1FDE01F70525A00CB43D8 /* Assets.xcassets */,
 				EE64BAC41F7EE33100A007A2 /* Design File */,
-				EEA1FDE21F70525A00CB43D8 /* LaunchScreen.storyboard */,
-				EEA1FDE51F70525A00CB43D8 /* Info.plist */,
 			);
 			path = D.Eco;
 			sourceTree = "<group>";
@@ -225,6 +247,7 @@
 				EEA1FDE11F70525A00CB43D8 /* Assets.xcassets in Resources */,
 				42C9F9681FD7781D00B50070 /* splash1.png in Resources */,
 				EE86796E2038DEF10014A6AA /* View.xib in Resources */,
+				427EA36A20E16C500005164D /* Default-568h@2x.png in Resources */,
 				42C9F9701FD7811700B50070 /* 183205-128.png in Resources */,
 				42E77FA620395BB400FC5635 /* DEco Tree.png in Resources */,
 				42D247B4201BB4AD004F141D /* 32_BigTree.png in Resources */,
@@ -243,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				424E5F7020DB4AE800689780 /* NetworkService.swift in Sources */,
 				EED097121F77281E00C281FA /* HomeModel.swift in Sources */,
 				EE4E4A971FBA764200CC1D69 /* TFTreeViewController.swift in Sources */,
 				42D247B2201BA968004F141D /* TreeDetailsView.swift in Sources */,

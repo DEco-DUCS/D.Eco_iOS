@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n1f-Qm-yxJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n1f-Qm-yxJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -264,7 +264,7 @@
                                 <rect key="frame" x="0.0" y="483" width="375" height="185"/>
                                 <color key="backgroundColor" red="0.8850739598274231" green="0.97531932592391968" blue="0.88740885257720947" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="185" id="9DH-a8-feh"/>
+                                    <constraint firstAttribute="height" constant="185" id="GpE-CA-5bJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -279,19 +279,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.69448751211166382" green="0.93215572834014893" blue="0.68925738334655762" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="SVE-je-dzr" firstAttribute="top" secondItem="47w-1f-IQZ" secondAttribute="bottom" constant="1" id="2vs-YB-arO"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ng7-C6-Hl9" secondAttribute="bottom" constant="-45" id="8PP-mM-g2d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="R22-bg-58z" secondAttribute="trailing" constant="-16" id="AGJ-IS-i8X"/>
                             <constraint firstItem="47w-1f-IQZ" firstAttribute="trailing" secondItem="R22-bg-58z" secondAttribute="trailing" id="CwP-qe-XDX"/>
-                            <constraint firstItem="SVE-je-dzr" firstAttribute="top" secondItem="47w-1f-IQZ" secondAttribute="bottom" constant="1" id="FEx-EW-FDD"/>
-                            <constraint firstItem="ng7-C6-Hl9" firstAttribute="leading" secondItem="Ugr-H2-o6i" secondAttribute="leadingMargin" constant="-16" id="FGY-22-iio"/>
-                            <constraint firstItem="47w-1f-IQZ" firstAttribute="leading" secondItem="SVE-je-dzr" secondAttribute="leading" id="I4h-rF-XRb"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="ng7-C6-Hl9" secondAttribute="bottom" constant="-45" id="QH3-EJ-veh"/>
+                            <constraint firstItem="ng7-C6-Hl9" firstAttribute="leading" secondItem="R22-bg-58z" secondAttribute="leading" id="JCJ-PI-UkD"/>
                             <constraint firstItem="R22-bg-58z" firstAttribute="leading" secondItem="Ugr-H2-o6i" secondAttribute="leadingMargin" constant="-16" id="Ra9-Pv-Asb"/>
-                            <constraint firstItem="ng7-C6-Hl9" firstAttribute="top" secondItem="SVE-je-dzr" secondAttribute="bottom" constant="1" id="WsJ-1i-ZR9"/>
-                            <constraint firstItem="47w-1f-IQZ" firstAttribute="trailing" secondItem="ng7-C6-Hl9" secondAttribute="trailing" id="bPy-w5-aPJ"/>
+                            <constraint firstItem="SVE-je-dzr" firstAttribute="trailing" secondItem="47w-1f-IQZ" secondAttribute="trailing" id="SXI-ki-6YH"/>
+                            <constraint firstItem="SVE-je-dzr" firstAttribute="leading" secondItem="47w-1f-IQZ" secondAttribute="leading" id="b2I-EQ-C1T"/>
                             <constraint firstItem="R22-bg-58z" firstAttribute="top" secondItem="pkO-Zr-YT1" secondAttribute="bottom" id="bVE-CT-mmA"/>
-                            <constraint firstItem="47w-1f-IQZ" firstAttribute="trailing" secondItem="SVE-je-dzr" secondAttribute="trailing" id="bs0-oK-bYl"/>
+                            <constraint firstItem="ng7-C6-Hl9" firstAttribute="top" secondItem="SVE-je-dzr" secondAttribute="bottom" constant="1" id="gwM-Kl-Nx7"/>
+                            <constraint firstItem="ng7-C6-Hl9" firstAttribute="leading" secondItem="SVE-je-dzr" secondAttribute="leading" id="suE-Qg-eWF"/>
                             <constraint firstItem="47w-1f-IQZ" firstAttribute="top" secondItem="pkO-Zr-YT1" secondAttribute="bottom" constant="333" id="ur4-AI-4Zr"/>
-                            <constraint firstItem="47w-1f-IQZ" firstAttribute="leading" secondItem="ng7-C6-Hl9" secondAttribute="leading" id="viQ-mU-JSC"/>
+                            <constraint firstItem="ng7-C6-Hl9" firstAttribute="trailing" secondItem="SVE-je-dzr" secondAttribute="trailing" id="yEQ-2m-k8I"/>
                         </constraints>
                     </view>
                     <connections>
@@ -320,12 +320,12 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="v0j-CG-BxH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHE-DX-s3E">
-                                <rect key="frame" x="283" y="518" width="76" height="92"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1I-RY-J8j">
+                                <rect key="frame" x="313" y="547" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="startTourButton.png"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="button:" destination="wSJ-i6-XiB" eventType="touchUpInside" id="rwR-KM-PU5"/>
+                                    <action selector="newbutton:" destination="wSJ-i6-XiB" eventType="touchUpInside" id="cA1-92-2Xg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -361,13 +361,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash3.png" translatesAutoresizingMaskIntoConstraints="NO" id="dJj-pd-lnZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zRe-Me-R2p">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zRe-Me-R2p">
                                 <rect key="frame" x="74" y="606" width="226" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lpK-LZ-Dja" firstAttribute="top" secondItem="zRe-Me-R2p" secondAttribute="bottom" constant="59" id="3kb-jt-xOH"/>
+                            <constraint firstItem="zRe-Me-R2p" firstAttribute="centerX" secondItem="dJj-pd-lnZ" secondAttribute="centerX" id="D4R-zB-3Ux"/>
+                            <constraint firstItem="zRe-Me-R2p" firstAttribute="leading" secondItem="kXH-iF-1bb" secondAttribute="leadingMargin" constant="58" id="HpZ-Lq-v4m"/>
                             <constraint firstItem="dJj-pd-lnZ" firstAttribute="leading" secondItem="kXH-iF-1bb" secondAttribute="leading" id="MHy-pU-rLk"/>
                             <constraint firstItem="lpK-LZ-Dja" firstAttribute="top" secondItem="dJj-pd-lnZ" secondAttribute="bottom" id="jWc-Ld-jAD"/>
                             <constraint firstAttribute="trailing" secondItem="dJj-pd-lnZ" secondAttribute="trailing" id="oer-yz-F28"/>
@@ -411,10 +413,9 @@
         <image name="menuIcon" width="32" height="27"/>
         <image name="routeIcon" width="48" height="48"/>
         <image name="splash3.png" width="640" height="960"/>
-        <image name="startTourButton.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mTW-m4-n2e"/>
+        <segue reference="U0W-PE-iNP"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.52687108520000003" green="0.1270085722" blue="0.078507170079999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

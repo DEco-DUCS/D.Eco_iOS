@@ -20,7 +20,7 @@ class HomeModel:NSObject {
     var secondDelegate: HomeModelDelegate?
     
     func getItems(){
-      let serviceUrl = "http://ec2-34-210-220-81.us-west-2.compute.amazonaws.com"
+      let serviceUrl = "http://mcs.drury.edu/deco/treeservice/index.php"
       let url = URL(string: serviceUrl)
         if let url = url{
             
@@ -47,7 +47,7 @@ class HomeModel:NSObject {
     // this function is for.
     // get the items for the 21 trees used for the route.
     func getItemsForRoute(){
-        let serviceUrl = "http://ec2-34-210-220-81.us-west-2.compute.amazonaws.com/index2.php"
+        let serviceUrl = "http://mcs.drury.edu/deco/treeservice/index2.php"
         let url = URL(string: serviceUrl)
         if let url = url{
             
