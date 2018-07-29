@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+    <key>NSCameraUsageDescription</key>
+    <string>need to use your mobile camera for the Auguemented reality</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>need to use your mobile camera for the Auguemented reality</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

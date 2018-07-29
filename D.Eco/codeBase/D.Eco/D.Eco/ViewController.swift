@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         
     }
     
-    //let imageMatchArray:[String] = ["American Dogwood","American Sycamore","Bald Cypress","Basswood","Black Maple","Callery Pear","Catalpa","Chinquapin Oak","Northern Red Oak","Pin Oak","Post Oak","Redbud","Siberian Elm","Silver Maple","Southern Magnolia","Sugar Maple","Sweet Gum","White Pine","Willow Oak"]
+    
     // direction button
     // apears when user touch an annotation
     // once it's tapped it will create a route from the user current locaton to the tapped annotation
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
     // blow code to handle the head image and load it before this view appears.
     override func viewWillAppear(_ animated: Bool) {
         // code to handel the header image.
-        manager.requestWhenInUseAuthorization()
+        
         //let titleView = UIImageView(image: UIImage(named: "Fixed Deco Header.png"))
         //self.navigationItem.titleView = titleView
         self.navigationItem.title = "D.Eco"
@@ -141,6 +141,7 @@ class ViewController: UIViewController {
         
         manager.delegate = self
         myMap.delegate = self
+        manager.requestWhenInUseAuthorization()
         manager.desiredAccuracy = kCLLocationAccuracyBest
         
         
@@ -174,6 +175,22 @@ class ViewController: UIViewController {
             }
             
         }
+          if #available(iOS 11.0, *) {
+        if segue.identifier == "ARViewControllerID" {
+          
+            let ARViewController: ARViewController = (segue.destination as? ARViewController)!
+                ARViewController.locationArrayForTour = self.locationArrayForTour
+                print(self.locationArrayForTour.count)
+            }
+            
+        }
+            
+            
+            
+            
+            
+        
+        
         
     }
     // comment to test github
