@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var treeDescriptionToDetails:String?
     var treeImageHolderToDetails:String?
     var calloutImage: UIImageView?
+    // test
     
     // this is a var of type CLplacemark that going to hold the tapped annotation from the user
     var currentPlacemark: CLLocation?
@@ -456,6 +457,10 @@ extension ViewController: MKMapViewDelegate{
                 let downloadService = NetworkService(url: url!)
                 downloadService.downloadImage { (data) in
                     let calloutImage = UIImage(data: data as Data)
+                   
+                    
+                    
+                    
                     DispatchQueue.main.async {
                         // Update the UI
                        let imageButton = UIButton()

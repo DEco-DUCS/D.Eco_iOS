@@ -55,7 +55,7 @@
 		42E77FA520395BB400FC5635 /* DEco Tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DEco Tree.png"; sourceTree = SOURCE_ROOT; };
 		8AE13E890F3EF7A86237C541 /* Pods-D.Eco.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-D.Eco.release.xcconfig"; path = "Pods/Target Support Files/Pods-D.Eco/Pods-D.Eco.release.xcconfig"; sourceTree = "<group>"; };
 		ADB1472DF0F33657B58C623C /* Pods_D_Eco.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_D_Eco.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFTreeViewController.swift; sourceTree = "<group>"; };
+		EE4E4A961FBA764200CC1D69 /* TFTreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFTreeViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EE75599820391482001AD1D3 /* CustomAnnotationCallout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationCallout.swift; sourceTree = "<group>"; };
 		EE7A27F01F72BB4800B6BED5 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		EE86796D2038DEF10014A6AA /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };

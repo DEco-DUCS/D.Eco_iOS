@@ -8,8 +8,14 @@
 
 import UIKit
 import MapKit
+
+
+
 protocol HomeModelDelegate {
     // this function is what used to store the data as annotations obejets and pass them to another viewcontroller.
+    // this is the sender protoct that wraps data from this model calss to the splashcreen viewcontroller..
+    
+    // TODO fix this protocot to accept two para using single function
     func itemsDownloaded(locations: [annotation])
     func itemsDownloadForTour(tourLocation: [annotation])
 }
@@ -72,7 +78,7 @@ class HomeModel:NSObject {
     }
 
     func parseJson(_ data: Data){
-        // could not append because annotations are objects.
+       
         var locationArray = [annotation]()
         do{
             let jsonArray = try JSONSerialization.jsonObject(with: data, options: []) as! [Any]

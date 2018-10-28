@@ -32,7 +32,7 @@ class splashScreenViewController: UIViewController, HomeModelDelegate {
 
    var locationArray = [annotation]()
    var locationArrayForTour = [annotation]()
-    override func viewDidLoad() {
+    override func viewDidLoad() { 
         super.viewDidLoad()
        
         homeModel.getItems()
