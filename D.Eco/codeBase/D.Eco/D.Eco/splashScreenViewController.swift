@@ -73,6 +73,9 @@ class splashScreenViewController: UIViewController, HomeModelDelegate {
         
         
     }
+    
+    
+    
 
     /*
     // MARK: - Navigation
@@ -85,3 +88,4 @@ class splashScreenViewController: UIViewController, HomeModelDelegate {
     */
 
 }
+

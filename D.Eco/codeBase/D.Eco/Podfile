@@ -6,11 +6,17 @@ target 'D.Eco' do
   use_frameworks!
 
   # Pods for D.Eco
+<<<<<<< Updated upstream
 pod 'ARCL'
 
 
 
 
+=======
+#pod 'ARCL'
+pod 'HDAugmentedReality', '~> 2.4.0'
+pod 'SwiftyJSON'
+>>>>>>> Stashed changes
 end
 
 

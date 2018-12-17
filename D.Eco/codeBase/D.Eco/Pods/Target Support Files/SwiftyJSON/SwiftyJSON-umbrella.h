@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double ARCLVersionNumber;
-FOUNDATION_EXPORT const unsigned char ARCLVersionString[];
+FOUNDATION_EXPORT double SwiftyJSONVersionNumber;
+FOUNDATION_EXPORT const unsigned char SwiftyJSONVersionString[];
 

@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import CoreLocation
-
 class ViewController: UIViewController {
     var polylineContainer: MKPolyline?
     var treeNameToDetails:String?
@@ -117,9 +116,9 @@ class ViewController: UIViewController {
   
     public func mapSetUp(){
         
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.0075,0.0075)
+        let span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.0075,longitudeDelta: 0.0075)
         let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake((manager.location?.coordinate.latitude)!, (manager.location?.coordinate.longitude)!)
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: myLocation, span: span)
         myMap.setRegion(region, animated: true)
         myMap.mapType = .hybrid
         
@@ -179,9 +178,9 @@ class ViewController: UIViewController {
           if #available(iOS 11.0, *) {
         if segue.identifier == "ARViewControllerID" {
           
-            let ARViewController: ARViewController = (segue.destination as? ARViewController)!
-                ARViewController.locationArrayForTour = self.locationArrayForTour
-                print(self.locationArrayForTour.count)
+//            let ARViewController: ARViewController = (segue.destination as? ARViewController)!
+//                ARViewController.locationArrayForTour = self.locationArrayForTour
+//                print(self.locationArrayForTour.count)
             }
             
         }
@@ -465,7 +464,7 @@ extension ViewController: MKMapViewDelegate{
                         // Update the UI
                        let imageButton = UIButton()
                         imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
-                        imageButton.setImage(calloutImage, for: UIControlState())
+                        imageButton.setImage(calloutImage, for: UIControl.State())
                         view.leftCalloutAccessoryView = imageButton
                         //view.leftCalloutAccessoryView?.reloadInputViews()
                     }
@@ -523,36 +522,36 @@ extension ViewController: MKMapViewDelegate{
 
 extension ViewController: CLLocationManagerDelegate{
     
+    // TODO: fix this for single routing 
     
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.directionButtonConstrain.constant = -70
-        self.cancelRouteButtonConstrains.constant = 45
-        guard let currentPlacemark = currentPlacemark else {
-            return
-        }
-        let routeArray = [locations.last, currentPlacemark]
-        
-        
-        var convertedRouteArray = routeArray.map{$0!.coordinate}
-        
-        let geodesic = MKGeodesicPolyline(coordinates: &convertedRouteArray, count: convertedRouteArray.count)
-        
-        
-        myMap.removeOverlays(self.myMap.overlays)
-        self.polylineContainer = geodesic
-        self.myMap.add(self.polylineContainer!)
-        // finish what you started here ->  myMap.overlays.
-        
-        
-    }
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        self.directionButtonConstrain.constant = -70
+//        self.cancelRouteButtonConstrains.constant = 45
+//        guard let currentPlacemark = currentPlacemark else {
+//            return
+//        }
+//        let routeArray = [locations.last, currentPlacemark]
+//
+//
+//        var convertedRouteArray = routeArray.map{$0!.coordinate}
+//
+//        let geodesic = MKGeodesicPolyline(coordinates: &convertedRouteArray, count: convertedRouteArray.count)
+//
+//
+//        myMap.removeOverlays(self.myMap.overlays)
+//        self.polylineContainer = geodesic
+//        self.myMap.add(self.polylineContainer!)
+//        // finish what you started here ->  myMap.overlays.
+//
+//
+//    }
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!){
         if let oldLocationNew = oldLocation as CLLocation?{
             let oldCoordinates = oldLocationNew.coordinate
             let newCoordinates = newLocation.coordinate
             var area = [oldCoordinates, newCoordinates]
             let polyline = MKPolyline(coordinates: &area, count: area.count)
-            myMap.remove(polyline)
+            myMap.removeOverlay(polyline)
         }
         
         
@@ -570,7 +569,7 @@ extension ViewController: CLLocationManagerDelegate{
 
 
 extension UIImageView {
-    func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+    func downloadedFrom(url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard
@@ -584,7 +583,7 @@ extension UIImageView {
             }
             }.resume()
     }
-    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+    func downloadedFrom(link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloadedFrom(url: url, contentMode: mode)
     }

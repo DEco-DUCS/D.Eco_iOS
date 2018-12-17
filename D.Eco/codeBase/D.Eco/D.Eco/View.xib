@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="368" height="288"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cMl-jo-sC9">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cMl-jo-sC9">
                     <rect key="frame" x="-7" y="47" width="375" height="200"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="zr1-0r-LsW"/>
@@ -55,16 +54,13 @@
                 </label>
             </subviews>
             <constraints>
-                <constraint firstItem="myK-7V-gzS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="8FU-gh-50k"/>
-                <constraint firstItem="cMl-jo-sC9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SUQ-Jb-TQB"/>
-                <constraint firstItem="gaU-is-b7e" firstAttribute="centerX" secondItem="cMl-jo-sC9" secondAttribute="centerX" id="Ylc-l9-J9f"/>
-                <constraint firstItem="uid-Um-jUB" firstAttribute="centerX" secondItem="cMl-jo-sC9" secondAttribute="centerX" id="eKk-hY-7Zq"/>
+                <constraint firstItem="gaU-is-b7e" firstAttribute="centerX" secondItem="cMl-jo-sC9" secondAttribute="centerX" constant="7" id="Ylc-l9-J9f"/>
+                <constraint firstItem="uid-Um-jUB" firstAttribute="centerX" secondItem="cMl-jo-sC9" secondAttribute="centerX" constant="3.5" id="eKk-hY-7Zq"/>
                 <constraint firstItem="uid-Um-jUB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="49" id="ihG-vN-Zzm"/>
                 <constraint firstItem="uid-Um-jUB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="l0y-WA-Nga"/>
-                <constraint firstItem="uid-Um-jUB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lQW-Ru-chM"/>
-                <constraint firstItem="myK-7V-gzS" firstAttribute="top" secondItem="cMl-jo-sC9" secondAttribute="bottom" constant="21" id="ljP-9j-Axw"/>
-                <constraint firstItem="cMl-jo-sC9" firstAttribute="top" secondItem="uid-Um-jUB" secondAttribute="bottom" constant="8" symbolic="YES" id="oSr-gX-Xab"/>
-                <constraint firstItem="gaU-is-b7e" firstAttribute="top" secondItem="myK-7V-gzS" secondAttribute="bottom" constant="16" id="ut2-hr-WTG"/>
+                <constraint firstItem="myK-7V-gzS" firstAttribute="top" secondItem="cMl-jo-sC9" secondAttribute="bottom" constant="32" id="ljP-9j-Axw"/>
+                <constraint firstItem="cMl-jo-sC9" firstAttribute="top" secondItem="uid-Um-jUB" secondAttribute="bottom" constant="-3" id="oSr-gX-Xab"/>
+                <constraint firstItem="gaU-is-b7e" firstAttribute="top" secondItem="myK-7V-gzS" secondAttribute="bottom" constant="-2" id="ut2-hr-WTG"/>
                 <constraint firstItem="gaU-is-b7e" firstAttribute="leading" secondItem="myK-7V-gzS" secondAttribute="leading" id="znI-WG-s3j"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -170,7 +170,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< Updated upstream
             <point key="canvasLocation" x="1430" y="-58"/>
+=======
+            <point key="canvasLocation" x="1430" y="35"/>
+>>>>>>> Stashed changes
         </scene>
         <!--Table View Controller-->
         <scene sceneID="gOD-rU-oEJ">
@@ -376,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTs-jL-ULh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="617" y="-89"/>
+            <point key="canvasLocation" x="617" y="21"/>
         </scene>
         <!--Splash Screen View Controller-->
         <scene sceneID="fmH-NF-UVK">
@@ -416,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcm-HK-Pxj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618" y="-751"/>
+            <point key="canvasLocation" x="617" y="-790"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EeG-jn-Fxz">

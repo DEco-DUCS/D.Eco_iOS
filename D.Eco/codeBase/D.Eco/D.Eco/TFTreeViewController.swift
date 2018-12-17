@@ -23,6 +23,11 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
      
      */
     // data that hold the pressed annotations data to store it and use it to pass the data to the detail view page
+    
+    
+    
+    
+    // TODO: move the segue functions between the view to the main thrread, so it won't interapt the dispatch queue. 
     var treeNameToDetails:String?
     var treeSubtitleToDetails:String?
     var treeDescriptionToDetails:String?
@@ -140,7 +145,7 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
         var sortedArrayForDrawing = newAnnotations.map{$0.coordinate}
         let geodesic = MKGeodesicPolyline(coordinates: &sortedArrayForDrawing, count: sortedArrayForDrawing.count)
         self.myMap.removeOverlays(self.myMap.overlays)
-        self.myMap.add(geodesic)
+        self.myMap.addOverlay(geodesic)
         
     }
     
@@ -184,9 +189,15 @@ class TFTreeViewController: UIViewController, CLLocationManagerDelegate {
     }
     public func mapSetUp(){
         
+<<<<<<< Updated upstream
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.0075,0.0075)
         let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake((locationManager.location?.coordinate.latitude)!, (locationManager.location?.coordinate.longitude)!)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+=======
+        let span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.0075,longitudeDelta: 0.0075)
+        let myLocation :CLLocationCoordinate2D = CLLocationCoordinate2DMake((manager.location?.coordinate.latitude)!, (manager.location?.coordinate.longitude)!)
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: myLocation, span: span)
+>>>>>>> Stashed changes
         myMap.setRegion(region, animated: true)
         myMap.mapType = .hybrid
         
@@ -466,6 +477,7 @@ extension TFTreeViewController: MKMapViewDelegate{
                 print(urlString)
                 print(url)
                 if url != nil{
+<<<<<<< Updated upstream
                     let downloadService = NetworkService(url: url!)
                     downloadService.downloadImage { (data) in
                         let calloutImage = UIImage(data: data as Data)
@@ -477,6 +489,19 @@ extension TFTreeViewController: MKMapViewDelegate{
                             view.leftCalloutAccessoryView = imageButton
                             //view.leftCalloutAccessoryView?.reloadInputViews()
                         }
+=======
+                let downloadService = NetworkService(url: url!)
+                downloadService.downloadImage { (data) in
+                    let calloutImage = UIImage(data: data as Data)
+                    DispatchQueue.main.async {
+                        // Update the UI
+                        let imageButton = UIButton()
+                        imageButton.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
+                        imageButton.setImage(calloutImage, for: UIControl.State())
+                        view.leftCalloutAccessoryView = imageButton
+                        //view.leftCalloutAccessoryView?.reloadInputViews()
+                    }
+>>>>>>> Stashed changes
                     }
                 }
                 
